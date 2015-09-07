@@ -1,7 +1,7 @@
 package org.wesnoth.network.compression;
 
 import org.junit.Test;
-import org.wesnoth.network.WiresharkByteConverter;
+import org.wesnoth.network.protocol.SizeConverter;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -12,7 +12,7 @@ import java.util.zip.GZIPInputStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.wesnoth.network.WiresharkByteConverter.*;
+import static org.wesnoth.network.toolsupport.WiresharkByteConverter.*;
 
 public class GzipUnzipTest {
 

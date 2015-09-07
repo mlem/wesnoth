@@ -1,4 +1,4 @@
-package org.wesnoth.network;
+package org.wesnoth.network.toolsupport;
 
 import javax.xml.bind.DatatypeConverter;
 
