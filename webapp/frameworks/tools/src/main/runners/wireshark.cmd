@@ -1,0 +1,1 @@
+java -jar wireshark.jar %1

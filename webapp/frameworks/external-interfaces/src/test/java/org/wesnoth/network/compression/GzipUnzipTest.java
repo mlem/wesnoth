@@ -1,17 +1,17 @@
 package org.wesnoth.network.compression;
 
 import org.junit.Test;
-import org.wesnoth.network.protocol.SizeConverter;
+import org.wesnoth.network.protocol.ArrayTrimmer;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.zip.GZIPInputStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.wesnoth.network.protocol.ArrayTrimmer.*;
 import static org.wesnoth.network.toolsupport.WiresharkByteConverter.*;
 
 public class GzipUnzipTest {
@@ -138,13 +138,4 @@ public class GzipUnzipTest {
         assertThat(actualString, is(expected));
     }
 
-    /**
-     * first four bytes represent something in wesnoth which I don't know for sure what. My guess is it is the client ID or an Identifier to
-     *
-     * @param zipped
-     * @return
-     */
-    private byte[] skipFirstFourBytes(byte[] zipped) {
-        return Arrays.copyOfRange(zipped, 4, zipped.length);
-    }
 }
