@@ -1,4 +1,4 @@
-package org.wesnoth.file;
+package org.wesnoth.wml.grammar;
 
 import org.antlr.v4.runtime.*;
 
