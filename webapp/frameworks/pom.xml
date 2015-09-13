@@ -17,6 +17,7 @@
         <module>external-interfaces</module>
         <module>web</module>
         <module>tools</module>
+        <module>wmlparser-antlr</module>
     </modules>
 
 
