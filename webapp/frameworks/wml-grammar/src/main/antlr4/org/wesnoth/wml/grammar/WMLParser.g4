@@ -3,8 +3,6 @@ parser grammar WMLParser;
 
 options { tokenVocab=WMLLexer; }
 
-r: document ;
-
 document    :   misc* tag misc* EOF;
 
 content     :   chardata?
