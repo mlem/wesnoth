@@ -1,12 +1,11 @@
 package org.wesnoth.network.compression;
 
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
-import org.wesnoth.network.protocol.ArrayTrimmer;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -59,7 +58,7 @@ public class GzipUnzipTest {
 
         String expected = "[gamelist]\n\n[/gamelist]\n[user]\navailable=\"yes\"\ngame_id=\"0\"\nlocation=\"\"\nname=\"BeoXTC\"\nregistered=\"no\"\nstatus=\"lobby\"\n[/user]\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(zipped));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(zipped)));
         assertThat(actualString, is(expected));
     }
 
@@ -70,7 +69,7 @@ public class GzipUnzipTest {
 
         String expected = "[gamelist]\n\n[/gamelist]\n[user]\navailable=\"yes\"\ngame_id=\"0\"\nlocation=\"\"\nname=\"BeoXTC\"\nregistered=\"no\"\nstatus=\"lobby\"\n[/user]\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(hexStringToByteArray(wiresharkValue)));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(hexStringToByteArray(wiresharkValue))));
         assertThat(actualString, is(expected));
     }
 
@@ -81,7 +80,7 @@ public class GzipUnzipTest {
 
         String expected = "[version]\n[/version]\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(hexStringToByteArray(wiresharkValue)));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(hexStringToByteArray(wiresharkValue))));
         assertThat(actualString, is(expected));
     }
 
@@ -91,7 +90,7 @@ public class GzipUnzipTest {
 
         String expected = "[version]\n\tversion=\"1.13.1+dev\"\n[/version]\n\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(hexStringToByteArray(wiresharkValue)));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(hexStringToByteArray(wiresharkValue))));
         assertThat(actualString, is(expected));
     }
 
@@ -102,7 +101,7 @@ public class GzipUnzipTest {
 
         String expected = "[mustlogin]\n[/mustlogin]\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(hexStringToByteArray(wiresharkValue)));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(hexStringToByteArray(wiresharkValue))));
         assertThat(actualString, is(expected));
     }
 
@@ -112,7 +111,7 @@ public class GzipUnzipTest {
 
         String expected = "[login]\n\tselective_ping=yes\n\tusername=\"BeoXTC\"\n[/login]\n\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(hexStringToByteArray(wiresharkValue)));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(hexStringToByteArray(wiresharkValue))));
         assertThat(actualString, is(expected));
     }
 
@@ -123,7 +122,7 @@ public class GzipUnzipTest {
 
         String expected = "[join_lobby]\n[/join_lobby]\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(hexStringToByteArray(wiresharkValue)));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(hexStringToByteArray(wiresharkValue))));
         assertThat(actualString, is(expected));
     }
 
@@ -134,8 +133,20 @@ public class GzipUnzipTest {
 
         String expected = "[gamelist]\n\n[/gamelist]\n[user]\navailable=\"yes\"\ngame_id=\"0\"\nlocation=\"\"\nname=\"BeoXTC\"\nregistered=\"no\"\nstatus=\"lobby\"\n[/user]\n";
 
-        String actualString = gzipUnzip.unzip(skipFirstFourBytes(hexStringToByteArray(wiresharkValue)));
+        String actualString = gzipUnzip.unzip(new ByteArrayInputStream(skipFirstFourBytes(hexStringToByteArray(wiresharkValue))));
         assertThat(actualString, is(expected));
     }
 
+
+    @Test
+    public void testUnzipFromFile() throws IOException {
+        InputStream stream = getClass().getResourceAsStream("oasis_mini_replay-web.gz");
+
+        InputStream expected = getClass().getResourceAsStream("oasis_mini_replay-web");
+
+        InputStream actualStream = gzipUnzip.unzipToStream(stream);
+        assertThat(actualStream, StreamMatcher.sameBytes(expected));
+    }
+
 }
+
