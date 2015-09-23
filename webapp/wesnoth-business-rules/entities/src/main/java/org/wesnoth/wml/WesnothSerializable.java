@@ -1,4 +1,4 @@
-package org.wesnoth.network.serializer;
+package org.wesnoth.wml;
 
 import java.io.*;
 

@@ -1,5 +1,9 @@
 package org.wesnoth.network.serializer;
 
+import org.wesnoth.wml.BooleanWMLAttribute;
+import org.wesnoth.wml.StringWMLAttribute;
+import org.wesnoth.wml.WesnothSerializable;
+
 import java.io.*;
 
 public class Login implements WesnothSerializable {

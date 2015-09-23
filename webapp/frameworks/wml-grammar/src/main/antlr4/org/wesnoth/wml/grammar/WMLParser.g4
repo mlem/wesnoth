@@ -3,7 +3,7 @@ parser grammar WMLParser;
 
 options { tokenVocab=WMLLexer; }
 
-document    :   misc* tag misc* EOF;
+document    :   misc* (tag misc?)* EOF;
 
 content     :   chardata?
                  ((tag | COMMENT) chardata?)* ;
@@ -11,7 +11,7 @@ content     :   chardata?
 
 tag         :   OPEN Name CLOSE content OPEN SLASH Name CLOSE ;
 
-chardata    :   TEXT | SEA_WS ;
+chardata    :   STRING | TEXT | SEA_WS ;
 
 misc        :   COMMENT | SEA_WS ;
 

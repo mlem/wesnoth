@@ -5,6 +5,7 @@ import org.wesnoth.network.protocol.ArrayTrimmer;
 import org.wesnoth.network.protocol.SizeConverter;
 import org.wesnoth.network.toolsupport.WiresharkByteConverter;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 public class WiresharkConverterCLI {
@@ -15,7 +16,7 @@ public class WiresharkConverterCLI {
         System.out.println("Packetsize: " + packetSize);
         try {
             System.out.println("Content:");
-            String unzip = new GzipUnzip().unzip(ArrayTrimmer.skipFirstFourBytes(bytes));
+            String unzip = new GzipUnzip().unzip(new ByteArrayInputStream(ArrayTrimmer.skipFirstFourBytes(bytes)));
             System.out.println(unzip);
         } catch (IOException e) {
             e.printStackTrace();

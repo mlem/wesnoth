@@ -7,9 +7,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wesnoth.wml.WMLTag;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -42,28 +41,11 @@ public class WmlParserListenerTest {
 
         WMLParser.DocumentContext element = parser.document();
 
-        WMLTag parent = wmlParserBaseListener.getRootTag();
-        assertThat(parent.name, is("parent_tag"));
-        assertThat(parent.attributes, is("\n     key1=value1\n     "));
+        WMLTag root = wmlParserBaseListener.getRootTag();
+        assertThat(root.getName(), is("parent_tag"));
+        assertThat(root.getAttributes(), is("\n     key1=value1\n     "));
 
 
-    }
-
-    public class WMLTag {
-
-        String name;
-        WMLTag parent;
-        List<WMLTag> subTags = new ArrayList<>();
-        String attributes;
-
-        public WMLTag(String name) {
-            this.name = name;
-        }
-
-        public void addTag(WMLTag current) {
-            subTags.add(current);
-            current.parent = this;
-        }
     }
 
     private class MyWMLParserBaseListener extends WMLParserBaseListener {
@@ -94,16 +76,10 @@ public class WmlParserListenerTest {
             super.exitTag(ctx);
             LOGGER.info(ctx.toStringTree());
             WMLTag current = stack.pop();
-            current.name = ctx.Name().stream()
+            current.setName(ctx.Name().stream()
                     .map(node -> node.getSymbol().getText())
-                    .findFirst().orElse("no_name");
-            LOGGER.info("Exiting TAG with name " + current.name);
-        }
-
-        @Override
-        public void enterChardata(@NotNull WMLParser.ChardataContext ctx) {
-            super.enterChardata(ctx);
-            LOGGER.info("enterChardata");
+                    .findFirst().orElse("no_name"));
+            LOGGER.info("Exiting TAG with name " + current.getName());
         }
 
         @Override
@@ -111,22 +87,10 @@ public class WmlParserListenerTest {
             super.exitChardata(ctx);
             String text = ctx.getText();
             if (!text.trim().isEmpty()) {
-                stack.peek().attributes = text;
+                stack.peek().setAttributes(text);
                 LOGGER.info("attributes found: " + text);
             }
             LOGGER.info("exitChardata");
-        }
-
-        @Override
-        public void enterContent(@NotNull WMLParser.ContentContext ctx) {
-            super.enterContent(ctx);
-            LOGGER.info("enterContent");
-        }
-
-        @Override
-        public void exitContent(@NotNull WMLParser.ContentContext ctx) {
-            super.exitContent(ctx);
-            LOGGER.info("exitContent");
         }
 
         public WMLTag getRootTag() {

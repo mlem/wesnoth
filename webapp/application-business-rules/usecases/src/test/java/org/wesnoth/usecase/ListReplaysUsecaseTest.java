@@ -5,8 +5,12 @@ import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -15,13 +19,10 @@ public class ListReplaysUsecaseTest {
     @Test
     public void test() throws ExternalServiceException {
         ReplayGateway replayGateway = mock(ReplayGateway.class);
+        when(replayGateway.listReplays(any(ReplayConnection.class))).thenReturn(Arrays.asList(new ReplayInfo(null, null, null, 0, null, null, null)));
         ListReplaysUsecase listReplaysUsecase = new ListReplaysUsecase(replayGateway);
 
-        ReplayConnection replayConnection = mock(ReplayConnection.class);
-        when(replayConnection.connectAndExecute()).thenReturn(getClass().getResourceAsStream("replays_1.12_20150921.html"));
-        when(replayConnection.currentUrl()).thenReturn("replays.wesnoth.org/1.12/20150921/");
-
-        ListReplaysUsecase.Request request = new ListReplaysUsecase.Request(replayConnection);
+        ListReplaysUsecase.Request request = new ListReplaysUsecase.Request(mock(ReplayConnection.class));
         ListReplaysUsecase.Response response = new ListReplaysUsecase.Response();
         listReplaysUsecase.execute(request, response);
 

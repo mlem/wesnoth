@@ -44,7 +44,6 @@ public class ListReplaysUsecase {
         private boolean success;
 
         public Collection<ReplayInfo> foundReplays() {
-            replayInfos = new ArrayList<>();
             return replayInfos;
         }
 

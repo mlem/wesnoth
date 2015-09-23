@@ -14,6 +14,8 @@ TEXT        :   ~[\[]+ ;                // match any char other than [
 
 EQUALS      :   '=' ;
 
+STRING      :   '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\') | ~['\\'|'"'] )* '"';
+
 
 mode INSIDE;
 

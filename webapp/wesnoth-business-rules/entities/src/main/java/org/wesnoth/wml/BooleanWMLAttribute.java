@@ -1,20 +1,22 @@
-package org.wesnoth.network.serializer;
+package org.wesnoth.wml;
+
+import org.wesnoth.wml.WMLAttribute;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class StringWMLAttribute implements WMLAttribute {
-    private String value;
+public class BooleanWMLAttribute implements WMLAttribute {
+    private boolean value;
 
-    public StringWMLAttribute(String value) {
+    public BooleanWMLAttribute(boolean value) {
         this.value = value;
     }
 
     @Override
     public void writeExternal(OutputStream out) throws IOException {
-        String outputValue = "\"" + value + "\"";
-        out.write(outputValue.getBytes());
+        String stringValue = value ? "yes" : "no";
+        out.write(stringValue.getBytes());
     }
 
     @Override

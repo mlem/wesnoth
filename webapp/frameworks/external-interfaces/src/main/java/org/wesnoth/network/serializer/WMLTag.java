@@ -1,14 +1,15 @@
 package org.wesnoth.network.serializer;
 
+import org.wesnoth.wml.WMLAttribute;
+import org.wesnoth.wml.WesnothSerializable;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-public class WMLTag implements WesnothSerializable{
+public class WMLTag implements WesnothSerializable {
     private String tagName;
     private Map<String, WMLAttribute> attributes = new HashMap<>();
 
