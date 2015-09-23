@@ -30,7 +30,7 @@ public class RecursiveTagTest {
         parser.setErrorHandler(new ExceptionThrowingErrorHandler());
 
         WMLParser.DocumentContext element = parser.document();
-        WMLParser.TagContext parentTag = element.tag();
+        WMLParser.TagContext parentTag = element.tag().get(0);
         assertThat(parentTag.Name().stream().map(node -> node.getSymbol().getText()).findFirst().get(), is("parent_tag"));
         assertThat(parentTag.content().chardata().get(0).TEXT().getText(), is("\n     key1=value1\n     "));
         List<WMLParser.TagContext> childTag = parentTag.content().tag();
