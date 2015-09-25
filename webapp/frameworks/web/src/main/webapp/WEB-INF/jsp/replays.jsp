@@ -1,6 +1,7 @@
 <%-- see  http://www.tutorialspoint.com/jsp/jsp_standard_tag_library.htm --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>Replays</title>
@@ -35,6 +36,10 @@
         .glyphicon-tower {
             font-size: large;
         }
+
+        .glyphicon-download-alt {
+            font-size: xx-large;
+        }
     </style>
 
     <script>
@@ -56,6 +61,7 @@
         <th>game name</th>
         <th>era</th>
         <th>players</th>
+        <%-- TODO: setup internationalisation files --%>
         <th><fmt:message key="person.form.lastName"/></th>
     </tr>
     <c:forEach items="${replayInfos}" var="replayInfo">
@@ -64,8 +70,26 @@
             <td><fmt:formatDate type="both" value="${replayInfo.recordedDate}" dateStyle="short"
                                 timeStyle="short"/></td>
             <td>${replayInfo.replaySize}</td>
-            <td class="wrapword">${replayInfo.gameName}</td>
-            <td class="wrapword">${replayInfo.era}</td>
+            <c:choose>
+                <c:when test="${fn:length(replayInfo.gameName) > 20}">
+                    <c:set var="shortGameName" value="${fn:substring(replayInfo.gameName, 0, 20)}"/>
+                    <td><abbr title="${replayInfo.gameName}">${shortGameName}</abbr></td>
+                </c:when>
+                <c:otherwise>
+                    <td>${replayInfo.gameName}</td>
+                </c:otherwise>
+            </c:choose>
+
+            <c:choose>
+                <c:when test="${fn:length(replayInfo.era) >= 20}">
+                    <c:set var="shortEra" value="${fn:substring(replayInfo.era, 0, 20)}"/>
+                    <td><abbr title="${replayInfo.era}">${shortEra}</abbr></td>
+                </c:when>
+                <c:otherwise>
+                    <td>${replayInfo.era}</td>
+                </c:otherwise>
+            </c:choose>
+
             <td>
                 <style>
                     <c:forEach items="${replayInfo.players}" var="player" varStatus="loopStatus">
@@ -84,7 +108,9 @@
                     <span class="sr-only">${player.name}</span>
                 </c:forEach>
             </td>
-            <td><a href="http://${replayInfo.downloadUri}" class="btn btn-default">download</a></td>
+                <%-- TODO: refactor this - we shouldn't write http:// in front of the url, the url should contain it already... --%>
+            <td><a href="http://${replayInfo.downloadUri}" class="btn btn-default" title="download"><span
+                    class="glyphicon glyphicon-download-alt"></span> </a></td>
         </tr>
     </c:forEach>
 </table>
