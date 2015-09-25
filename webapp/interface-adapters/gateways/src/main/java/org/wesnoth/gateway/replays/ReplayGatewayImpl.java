@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
     private List<ReplayInfo> parseStreamToListOfReplays(InputStream inputStream, String currentUrl) throws
             IOException, URISyntaxException {
         List<ReplayInfo> replayInfos = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         String readLine = br.readLine();
         while (readLine != null) {
             Matcher matcher = PATTERN.matcher(readLine);
