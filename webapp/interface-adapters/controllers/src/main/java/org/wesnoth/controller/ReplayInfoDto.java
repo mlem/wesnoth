@@ -11,9 +11,9 @@ public class ReplayInfoDto {
     private final String replaySize;
     private final String gameName;
     private final String era;
-    private final List<String> players;
+    private final List<PlayerDto> players;
 
-    public ReplayInfoDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<String> players) {
+    public ReplayInfoDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<PlayerDto> players) {
         this.downloadUri = downloadUri;
         this.filename = filename;
         this.recordedDate = recordedDate;
@@ -47,7 +47,27 @@ public class ReplayInfoDto {
         return era;
     }
 
-    public List<String> getPlayers() {
+    public List<PlayerDto> getPlayers() {
         return players;
+    }
+
+    public static class PlayerDto {
+
+        private final String name;
+        private final String colorCode;
+
+        public PlayerDto(String name, String colorCode) {
+
+            this.name = name;
+            this.colorCode = colorCode;
+        }
+
+        public String getColorCode() {
+            return colorCode;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }
