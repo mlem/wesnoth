@@ -2,6 +2,7 @@ package org.wesnoth.gateway.replays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wesnoth.UserName;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.usecase.ReplayInfo;
@@ -95,7 +96,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
         String era = matcher.group(6);
         String players = matcher.group(7);
         String[] splittedPlayers = players.split(",");
-        List<String> playersOfReplay = Stream.of(splittedPlayers).map(String::trim).collect(Collectors.toList());
+        List<UserName> playersOfReplay = Stream.of(splittedPlayers).map(String::trim).map(UserName::new).collect(Collectors.toList());
         return new ReplayInfo(new URI(downloadLink), filename, recordedDate, replaySize, gameName, era, playersOfReplay);
     }
 
