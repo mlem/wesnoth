@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
+
 @Controller
 public class ReplayController {
 
@@ -28,8 +30,8 @@ public class ReplayController {
                 replayInfo.getFilename(),
                 replayInfo.getRecordedDate(),
                 replayInfo.getReplaySize() / 1024 + "K",
-                replayInfo.getGameName(),
+                escapeHtml4(replayInfo.getGameName()),
                 replayInfo.getEra(),
-                replayInfo.getPlayers().stream().map(player -> new ReplayInfoDto.PlayerDto(player.getUsername(), intToARGB(player.getUsername().hashCode()))).collect(Collectors.toList()))).collect(Collectors.toList());
+                replayInfo.getPlayers().stream().map(player -> new ReplayInfoDto.PlayerDto(escapeHtml4(player.getUsername()), intToARGB(player.getUsername().hashCode()))).collect(Collectors.toList()))).collect(Collectors.toList());
     }
 }
