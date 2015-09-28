@@ -55,7 +55,7 @@
 
 <table class="table">
     <tr>
-        <th>filename</th>
+        <th>mapname</th>
         <th>record date</th>
         <th>replay size</th>
         <th>game name</th>
@@ -66,7 +66,7 @@
     </tr>
     <c:forEach items="${replayInfos}" var="replayInfo">
         <tr>
-            <td class="wrapword">${replayInfo.filename}</td>
+            <td class="wrapword">${replayInfo.mapName}</td>
             <td><fmt:formatDate type="both" value="${replayInfo.recordedDate}" dateStyle="short"
                                 timeStyle="short"/></td>
             <td>${replayInfo.replaySize}</td>

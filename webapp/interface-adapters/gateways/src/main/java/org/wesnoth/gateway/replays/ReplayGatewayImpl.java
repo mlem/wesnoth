@@ -64,6 +64,23 @@ public class ReplayGatewayImpl implements ReplayGateway {
     private ReplayInfo convertToReplayInfo(Matcher matcher, String currentUrl) throws URISyntaxException {
         String downloadLink = currentUrl + matcher.group(1);
         String filename = matcher.group(2);
+
+        int turnIndex = filename.indexOf("Turn");
+        int scenarioIndex = filename.indexOf("^");
+        if(scenarioIndex != -1) {
+            turnIndex = turnIndex < scenarioIndex ? turnIndex : scenarioIndex;
+        }
+        String mapName = filename.substring(0, turnIndex-1).replace("_", " ").trim();
+        Pattern idAndZipPattern = Pattern.compile(".*\\(([^)]+)\\)\\.(gz|bz)");
+        Matcher idAndZipMatcher = idAndZipPattern.matcher(filename);
+        Integer replayId = null;
+        Compression compression = null;
+        if (idAndZipMatcher.find()) {
+            replayId = Integer.parseInt(idAndZipMatcher.group(1));
+            compression = Compression.findBy(idAndZipMatcher.group(2));
+        }
+
+
         String date = matcher.group(3);
         Date recordedDate = null;
         try {
@@ -98,7 +115,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
         String players = matcher.group(7);
         String[] splittedPlayers = players.split(",");
         List<UserName> playersOfReplay = Stream.of(splittedPlayers).map(String::trim).map(UserName::new).collect(Collectors.toList());
-        return new ReplayInfo(new URI(downloadLink), filename, recordedDate, replaySize, gameName, era, playersOfReplay);
+        return new ReplayInfo(new URI(downloadLink), filename, recordedDate, replaySize, gameName, era, playersOfReplay, mapName, replayId, compression);
     }
 
 }

@@ -1,4 +1,4 @@
-package org.wesnoth.controller;
+package org.wesnoth.controller.replay;
 
 import org.springframework.stereotype.Controller;
 import org.wesnoth.gateway.replays.ReplayGatewayImpl;
@@ -32,6 +32,12 @@ public class ReplayController {
                 replayInfo.getReplaySize() / 1024 + "K",
                 escapeHtml4(replayInfo.getGameName()),
                 replayInfo.getEra(),
-                replayInfo.getPlayers().stream().map(player -> new ReplayInfoDto.PlayerDto(escapeHtml4(player.getUsername()), intToARGB(player.getUsername().hashCode()))).collect(Collectors.toList()))).collect(Collectors.toList());
+                replayInfo.getPlayers().stream()
+                        .map(player -> new ReplayInfoDto.PlayerDto(
+                                escapeHtml4(player.getUsername()),
+                                intToARGB(player.getUsername().hashCode())))
+                        .collect(Collectors.toList()),
+                        replayInfo.getMapName())
+        ).collect(Collectors.toList());
     }
 }

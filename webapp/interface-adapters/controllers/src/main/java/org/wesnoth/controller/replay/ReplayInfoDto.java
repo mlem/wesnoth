@@ -1,4 +1,4 @@
-package org.wesnoth.controller;
+package org.wesnoth.controller.replay;
 
 import java.net.URI;
 import java.util.Date;
@@ -12,8 +12,9 @@ public class ReplayInfoDto {
     private final String gameName;
     private final String era;
     private final List<PlayerDto> players;
+    private String mapName;
 
-    public ReplayInfoDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<PlayerDto> players) {
+    public ReplayInfoDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<PlayerDto> players, String mapName) {
         this.downloadUri = downloadUri;
         this.filename = filename;
         this.recordedDate = recordedDate;
@@ -21,6 +22,7 @@ public class ReplayInfoDto {
         this.gameName = gameName;
         this.era = era;
         this.players = players;
+        this.mapName = mapName;
     }
 
     public URI getDownloadUri() {
@@ -49,6 +51,10 @@ public class ReplayInfoDto {
 
     public List<PlayerDto> getPlayers() {
         return players;
+    }
+
+    public String getMapName() {
+        return mapName;
     }
 
     public static class PlayerDto {

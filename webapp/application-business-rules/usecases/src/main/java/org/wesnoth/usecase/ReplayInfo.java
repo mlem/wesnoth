@@ -1,6 +1,7 @@
 package org.wesnoth.usecase;
 
 import org.wesnoth.UserName;
+import org.wesnoth.gateway.replays.Compression;
 
 import java.net.URI;
 import java.util.Date;
@@ -14,8 +15,11 @@ public class ReplayInfo {
     private final String gameName;
     private final String era;
     private final List<UserName> players;
+    private String mapName;
+    private final Integer replayId;
+    private final Compression compression;
 
-    public ReplayInfo(URI downloadUri, String filename, Date recordedDate, int replaySize, String gameName, String era, List<UserName> players) {
+    public ReplayInfo(URI downloadUri, String filename, Date recordedDate, int replaySize, String gameName, String era, List<UserName> players, String mapName, Integer replayId, Compression compression) {
         this.downloadUri = downloadUri;
         this.filename = filename;
         this.recordedDate = recordedDate;
@@ -23,7 +27,12 @@ public class ReplayInfo {
         this.gameName = gameName;
         this.era = era;
         this.players = players;
+        this.mapName = mapName;
+        this.replayId = replayId;
+        this.compression = compression;
     }
+
+
 
     public URI getDownloadUri() {
         return downloadUri;
@@ -51,5 +60,17 @@ public class ReplayInfo {
 
     public List<UserName> getPlayers() {
         return players;
+    }
+
+    public String getMapName() {
+        return mapName;
+    }
+
+    public Integer getReplayId() {
+        return replayId;
+    }
+
+    public Compression getCompression() {
+        return compression;
     }
 }
