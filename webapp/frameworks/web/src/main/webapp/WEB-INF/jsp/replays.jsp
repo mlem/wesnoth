@@ -24,13 +24,10 @@
     <style>
         .wrapword {
             white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-            white-space: -webkit-pre-wrap; /*Chrome & Safari */
-            white-space: -pre-wrap; /* Opera 4-6 */
             white-space: -o-pre-wrap; /* Opera 7 */
             white-space: pre-wrap; /* css-3 */
             word-wrap: break-word; /* Internet Explorer 5.5+ */
             word-break: break-all;
-            white-space: normal;
         }
 
         .glyphicon-tower {
@@ -91,7 +88,7 @@
             </c:choose>
 
             <td>
-                <style>
+                <style scoped>
                     <c:forEach items="${replayInfo.players}" var="player" varStatus="loopStatus">
                     <%-- TODO: refactor this - we shouldn't create a css for the color all over again, if it was already defined --%>
                     .${player.name} {
