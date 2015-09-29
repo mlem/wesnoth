@@ -2,9 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
-<fmt:setLocale value="${language}" />
-<fmt:setBundle basename="org.wesnoth.i18n.replay" />
+<c:set var="language"
+       value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}"
+       scope="session"/>
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="org.wesnoth.i18n.replay"/>
 <!DOCTYPE html>
 <html lang="${language}">
 <head>
@@ -35,7 +37,7 @@
         }
 
         .glyphicon-tower {
-            font-size: large;
+            font-size: x-large;
         }
 
         .glyphicon-download-alt, .glyphicon-play-circle {
@@ -62,7 +64,6 @@
         <th><fmt:message key="replay.table.heading.gamename"/></th>
         <th><fmt:message key="replay.table.heading.era"/></th>
         <th><fmt:message key="replay.table.heading.players"/></th>
-        <%-- TODO: setup internationalisation files --%>
         <th><fmt:message key="replay.table.heading.actions"/></th>
     </tr>
     <c:forEach items="${replayInfos}" var="replayInfo">
@@ -92,18 +93,20 @@
             </c:choose>
 
             <td>
-                <style scoped>
+                <style>
                     <c:forEach items="${replayInfo.players}" var="player" varStatus="loopStatus">
+                    <c:set var="playerCssClass" value="${fn:replace(player.name, ' ' ,'_' )}"/>
                     <%-- TODO: refactor this - we shouldn't create a css for the color all over again, if it was already defined --%>
-                    .${player.name} {
-                        color: ${player.colorCode};
+                    .${playerCssClass} {
+                        color: ${'#' += player.colorCode};
                     }
 
                     </c:forEach>
                 </style>
                 <c:forEach items="${replayInfo.players}" var="player">
+                    <c:set var="playerCssClass" value="${fn:replace(player.name, ' ' ,'_' )}"/>
 
-                    <span class="glyphicon glyphicon-tower ${player.name}" aria-hidden="true"
+                    <span class="glyphicon glyphicon-tower ${playerCssClass}" aria-hidden="true"
                           data-toggle="popover" title="" data-content="${player.name}"
                           data-placement="top" data-trigger="hover"></span>
                     <span class="sr-only">${player.name}</span>
@@ -112,8 +115,8 @@
                 <%-- TODO: refactor this - we shouldn't write http:// in front of the url, the url should contain it already... --%>
             <td><a href="http://${replayInfo.downloadUri}" class="btn btn-default" title="download"><span
                     class="glyphicon glyphicon-download-alt"></span> </a>
-                    <a href="/replay/view/${replayInfo.replayId}.html" class="btn btn-default"><span
-                            class="glyphicon glyphicon-play-circle"></span></a>
+                <a href="/replay/view/${replayInfo.replayId}.html" class="btn btn-default"><span
+                        class="glyphicon glyphicon-play-circle"></span></a>
             </td>
         </tr>
     </c:forEach>
