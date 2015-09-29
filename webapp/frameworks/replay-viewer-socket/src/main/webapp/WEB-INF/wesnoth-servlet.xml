@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 
 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/websocket
+        http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd"    >
 
     <context:component-scan base-package="org.wesnoth.servlet"/>
     <context:component-scan base-package="org.wesnoth.controller"/>
@@ -19,4 +22,18 @@ http://www.springframework.org/schema/context/spring-context-4.0.xsd">
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <websocket:message-broker application-destination-prefix="/app">
+        <websocket:stomp-endpoint path="/hello" >
+            <websocket:sockjs/>
+        </websocket:stomp-endpoint>
+        <websocket:simple-broker prefix="/topic" />
+    </websocket:message-broker>
+
+
+    <websocket:message-broker>
+        <websocket:stomp-endpoint path="/hello">
+            <websocket:sockjs />
+        </websocket:stomp-endpoint>
+        <websocket:stomp-broker-relay prefix="/topic,/queue" />
+    </websocket:message-broker>
 </beans>

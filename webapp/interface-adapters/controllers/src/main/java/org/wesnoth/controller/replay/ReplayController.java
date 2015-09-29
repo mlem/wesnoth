@@ -37,7 +37,9 @@ public class ReplayController {
                                 escapeHtml4(player.getUsername()),
                                 intToARGB(player.getUsername().hashCode())))
                         .collect(Collectors.toList()),
-                        replayInfo.getMapName())
+                        replayInfo.getMapName(),
+                        replayInfo.getReplayId())
         ).collect(Collectors.toList());
     }
+
 }

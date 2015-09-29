@@ -13,8 +13,9 @@ public class ReplayInfoDto {
     private final String era;
     private final List<PlayerDto> players;
     private String mapName;
+    private Integer replayId;
 
-    public ReplayInfoDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<PlayerDto> players, String mapName) {
+    public ReplayInfoDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<PlayerDto> players, String mapName, Integer replayId) {
         this.downloadUri = downloadUri;
         this.filename = filename;
         this.recordedDate = recordedDate;
@@ -23,6 +24,7 @@ public class ReplayInfoDto {
         this.era = era;
         this.players = players;
         this.mapName = mapName;
+        this.replayId = replayId;
     }
 
     public URI getDownloadUri() {
@@ -55,6 +57,10 @@ public class ReplayInfoDto {
 
     public String getMapName() {
         return mapName;
+    }
+
+    public Integer getReplayId() {
+        return replayId;
     }
 
     public static class PlayerDto {

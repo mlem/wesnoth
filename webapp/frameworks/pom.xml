@@ -18,6 +18,7 @@
         <module>web</module>
         <module>tools</module>
         <module>wml-grammar</module>
+        <module>replay-viewer-socket</module>
     </modules>
 
 
