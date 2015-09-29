@@ -2,7 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<html>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="org.wesnoth.i18n.replay" />
+<!DOCTYPE html>
+<html lang="${language}">
 <head>
     <title>Replays</title>
     <meta charset="utf-8">
@@ -52,14 +56,14 @@
 
 <table class="table">
     <tr>
-        <th>mapname</th>
-        <th>record date</th>
-        <th>replay size</th>
-        <th>game name</th>
-        <th>era</th>
-        <th>players</th>
+        <th><fmt:message key="replay.table.heading.mapname"/></th>
+        <th><fmt:message key="replay.table.heading.recorddate"/></th>
+        <th><fmt:message key="replay.table.heading.size"/></th>
+        <th><fmt:message key="replay.table.heading.gamename"/></th>
+        <th><fmt:message key="replay.table.heading.era"/></th>
+        <th><fmt:message key="replay.table.heading.players"/></th>
         <%-- TODO: setup internationalisation files --%>
-        <th><fmt:message key="person.form.lastName"/></th>
+        <th><fmt:message key="replay.table.heading.actions"/></th>
     </tr>
     <c:forEach items="${replayInfos}" var="replayInfo">
         <tr>
