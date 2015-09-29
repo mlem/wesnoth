@@ -10,7 +10,6 @@ public class ViewController {
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public String greeting(String message) throws Exception {
-        Thread.sleep(3000); // simulated delay
         return "Hello, " + message + "!";
     }
 
