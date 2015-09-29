@@ -28,6 +28,7 @@
                 stompClient.subscribe('/topic/greetings', function(greeting){
                     showGreeting(greeting.body);
                 });
+                sendName();
             });
         }
 
@@ -40,8 +41,7 @@
         }
 
         function sendName() {
-            var name = document.getElementById('name').value;
-            stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+            stompClient.send("/app/hello", {}, "${replayUri}");
         }
 
         function showGreeting(message) {
@@ -53,7 +53,7 @@
         }
     </script>
 </head>
-<body onload="disconnect()">
+<body onload="connect()">
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
     Javascript and reload this page!</h2></noscript>
 <div>
@@ -62,8 +62,6 @@
         <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
     </div>
     <div id="conversationDiv">
-        <label>What is your name?</label><input type="text" id="name" />
-        <button id="sendName" onclick="sendName();">Send</button>
         <p id="response"></p>
     </div>
 </div>

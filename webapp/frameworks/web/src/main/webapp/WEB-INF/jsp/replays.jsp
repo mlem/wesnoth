@@ -113,10 +113,14 @@
                 </c:forEach>
             </td>
                 <%-- TODO: refactor this - we shouldn't write http:// in front of the url, the url should contain it already... --%>
-            <td><a href="http://${replayInfo.downloadUri}" class="btn btn-default" title="download"><span
+            <td><a href="${replayInfo.downloadUri}" class="btn btn-default" title="download"><span
                     class="glyphicon glyphicon-download-alt"></span> </a>
-                <a href="/replay/view/${replayInfo.replayId}.html" class="btn btn-default"><span
-                        class="glyphicon glyphicon-play-circle"></span></a>
+
+                <form action="replay/view/${replayInfo.replayId}.html" method="post">
+                    <input type="hidden" name="downloadUri" value="${replayInfo.downloadUri}">
+                    <button type="submit" class="btn btn-default"><span
+                            class="glyphicon glyphicon-play-circle"></span></button>
+                </form>
             </td>
         </tr>
     </c:forEach>

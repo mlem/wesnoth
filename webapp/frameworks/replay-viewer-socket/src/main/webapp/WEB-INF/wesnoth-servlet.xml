@@ -30,10 +30,4 @@ http://www.springframework.org/schema/context/spring-context-4.0.xsd
     </websocket:message-broker>
 
 
-    <websocket:message-broker>
-        <websocket:stomp-endpoint path="/hello">
-            <websocket:sockjs />
-        </websocket:stomp-endpoint>
-        <websocket:stomp-broker-relay prefix="/topic,/queue" />
-    </websocket:message-broker>
 </beans>

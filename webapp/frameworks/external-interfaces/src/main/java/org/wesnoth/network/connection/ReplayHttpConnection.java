@@ -16,6 +16,7 @@ import java.io.InputStream;
 
 public class ReplayHttpConnection implements ReplayConnection {
     private final static String HOST_URL = "replay.wesnoth.org";
+    private static final String PROTOCOL = "http://";
     private final String requestUri;
 
     public ReplayHttpConnection(String requestUri) {
@@ -49,6 +50,6 @@ public class ReplayHttpConnection implements ReplayConnection {
 
     @Override
     public String currentUrl() {
-        return HOST_URL + requestUri;
+        return PROTOCOL + HOST_URL + requestUri;
     }
 }
