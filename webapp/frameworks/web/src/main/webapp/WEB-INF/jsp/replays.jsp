@@ -37,7 +37,7 @@
             font-size: large;
         }
 
-        .glyphicon-download-alt {
+        .glyphicon-download-alt, .glyphicon-play-circle {
             font-size: xx-large;
         }
     </style>
@@ -111,11 +111,8 @@
                 <%-- TODO: refactor this - we shouldn't write http:// in front of the url, the url should contain it already... --%>
             <td><a href="http://${replayInfo.downloadUri}" class="btn btn-default" title="download"><span
                     class="glyphicon glyphicon-download-alt"></span> </a>
-                <form action="replay/view/${replayInfo.replayId}">
-                    <input type="hidden" name="replayId" value="${replayInfo.replayId}">
-                    <button type="submit"><span
-                            class="glyphicon glyphicon-play-circle"></span></button>
-                </form>
+                    <a href="/replay/view/${replayInfo.replayId}.html" class="btn btn-default"><span
+                            class="glyphicon glyphicon-play-circle"></span></a>
             </td>
         </tr>
     </c:forEach>
