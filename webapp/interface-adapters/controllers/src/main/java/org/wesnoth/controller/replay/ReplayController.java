@@ -1,5 +1,7 @@
 package org.wesnoth.controller.replay;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.wesnoth.gateway.replays.ReplayGatewayImpl;
 import org.wesnoth.usecase.ListReplaysUsecase;
@@ -14,6 +16,8 @@ import static org.apache.commons.lang3.StringEscapeUtils.escapeHtml4;
 @Controller
 public class ReplayController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReplayController.class);
+
     public static String intToARGB(int i) {
         return Integer.toHexString(((i >> 16) & 0xFF)) +
                 Integer.toHexString(((i >> 8) & 0xFF)) +
@@ -24,6 +28,9 @@ public class ReplayController {
         ListReplaysUsecase listReplaysUsecase = new ListReplaysUsecase(new ReplayGatewayImpl());
         ListReplaysUsecase.Response response = new ListReplaysUsecase.Response();
         listReplaysUsecase.execute(request, response);
+        if(!response.success()) {
+            LOGGER.error("error in listReplayUsecase", response.exception);
+        }
         Collection<ReplayInfo> replayInfos = response.foundReplays();
 
         return replayInfos.stream().map(replayInfo -> new ReplayInfoDto(replayInfo.getDownloadUri(),

@@ -4,7 +4,6 @@ import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,10 +18,11 @@ public class ListReplaysUsecase {
     public void execute(Request request, Response response) {
         try {
             response.replayInfos = replayGateway.listReplays(request.replayConnection());
+            response.success = true;
         } catch (ExternalServiceException e) {
-            // TODO - do something with this exception
+            response.exception = e;
+            response.success = false;
         }
-        response.success = true;
 
     }
 
@@ -42,6 +42,7 @@ public class ListReplaysUsecase {
 
         private List<ReplayInfo> replayInfos;
         private boolean success;
+        public Exception exception;
 
         public Collection<ReplayInfo> foundReplays() {
             return replayInfos;
@@ -49,6 +50,10 @@ public class ListReplaysUsecase {
 
         public boolean success() {
             return success;
+        }
+
+        public Exception getException() {
+            return exception;
         }
     }
 }
