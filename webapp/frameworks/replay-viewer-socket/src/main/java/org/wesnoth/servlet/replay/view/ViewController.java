@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 
 @Controller
 public class ViewController {
@@ -27,9 +28,11 @@ public class ViewController {
 
         new Thread(() -> {
             try {
-                URL uri = new URL(replayUri);
+                String decodedUrl = URLDecoder.decode(replayUri.replaceAll("\\+", "%2b"), "UTF-8");
+                URL uri = new URL(decodedUrl);
                 InputStream inputStream = uri.openStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new BZip2InputStream(inputStream, false)));
+                BZip2InputStream stream = new BZip2InputStream(inputStream, false);
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
 
                 String line = bufferedReader.readLine();
                 while(line != null) {
@@ -37,6 +40,7 @@ public class ViewController {
                     line= bufferedReader.readLine();
                 }
             } catch (MalformedURLException e) {
+                // TODO: don't print stacktrace. LOG or do something else. Maybe return something to the WebSocket
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
