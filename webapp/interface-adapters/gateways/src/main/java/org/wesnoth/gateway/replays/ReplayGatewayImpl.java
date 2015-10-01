@@ -29,6 +29,8 @@ public class ReplayGatewayImpl implements ReplayGateway {
     private final static SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
     private final static Logger LOGGER = LoggerFactory.getLogger(ReplayGateway.class);
     private final static Pattern PATTERN = Pattern.compile("<tr><td valign=\"top\"><img src=\"\\/icons\\/unknown.gif\" alt=\"\\[\\s*]\"><\\/td><td><a href=\\\"([^\"]*)\">([^<]*)<\\/a><\\/td><td align=\"right\">([^<]*)<\\/td><td align=\"right\">([^<]*)<\\/td><td><i>title<\\/i>: <b>([^<]*)<\\/b>\\s<i>era<\\/i>: <b>([^<]*)<\\/b> <i>players<\\/i>:([^<]*)");
+    private final static Pattern ID_AND_ZIP_PATTERN = Pattern.compile(".*\\(([^)]+)\\)\\.(gz|bz)");
+    private final static Pattern SIZE_PATTERN = Pattern.compile("([0-9\\.]*)([MK])");
 
     @Override
     public List<ReplayInfo> listReplays(ReplayConnection replayConnection) throws ExternalServiceException {
@@ -71,8 +73,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
             turnIndex = turnIndex < scenarioIndex ? turnIndex : scenarioIndex;
         }
         String mapName = filename.substring(0, turnIndex-1).replace("_", " ").trim();
-        Pattern idAndZipPattern = Pattern.compile(".*\\(([^)]+)\\)\\.(gz|bz)");
-        Matcher idAndZipMatcher = idAndZipPattern.matcher(filename);
+        Matcher idAndZipMatcher = ID_AND_ZIP_PATTERN.matcher(filename);
         Integer replayId = null;
         Compression compression = null;
         if (idAndZipMatcher.find()) {
@@ -89,8 +90,8 @@ public class ReplayGatewayImpl implements ReplayGateway {
             LOGGER.warn("Couldn't parse date: " + date + " to format " + SIMPLE_DATE_FORMAT.toPattern());
         }
         String size = matcher.group(4);
-        Pattern sizePattern = Pattern.compile("([0-9\\.]*)([MK])");
-        Matcher sizeMatcher = sizePattern.matcher(size);
+
+        Matcher sizeMatcher = SIZE_PATTERN.matcher(size);
         int replaySize = 0;
         if (sizeMatcher.find()) {
             String foundSize = sizeMatcher.group(1);
