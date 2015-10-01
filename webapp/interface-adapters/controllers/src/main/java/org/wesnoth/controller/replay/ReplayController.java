@@ -7,6 +7,7 @@ import org.wesnoth.gateway.replays.ReplayGatewayImpl;
 import org.wesnoth.usecase.ListReplaysUsecase;
 import org.wesnoth.usecase.ReplayInfo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +31,8 @@ public class ReplayController {
         listReplaysUsecase.execute(request, response);
         if(!response.success()) {
             LOGGER.error("error in listReplayUsecase", response.exception);
+            // TODO: don't return empty list. Return something, that the UI can handle. Maybe throw an exception.
+            return new ArrayList<>();
         }
         Collection<ReplayInfo> replayInfos = response.foundReplays();
 
