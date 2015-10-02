@@ -1,9 +1,9 @@
 package org.wesnoth.usecase.replay;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import org.wesnoth.connection.ExternalServiceException;
+import org.wesnoth.connection.replays.ReplayConnection;
+import org.wesnoth.gateway.replays.ReplayGateway;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -11,42 +11,33 @@ import java.util.Observer;
 
 public class ViewReplayUsecase {
 
-    private final Request request;
-    private final Response response;
+    private final ReplayGateway replayGateway;
 
-    public ViewReplayUsecase(Request request, Response response) {
-        this.request = request;
-        this.response = response;
+    public ViewReplayUsecase(ReplayGateway replayGateway) {
+        this.replayGateway = replayGateway;
     }
 
-    public void execute() {
+    public void execute(Request request, Response response) {
 
-        Replay replay = new Replay();
-        replay.registerObserver(request.observer);
+        ReplayViewer replayViewer = new ReplayViewer();
+        replayViewer.registerObserver(request.observer);
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.stream));
-        new Thread(() -> {
-        String line = null;
         try {
-            line = bufferedReader.readLine();
-            while (line != null) {
-                replay.addLine(line);
-                line = bufferedReader.readLine();
-            }
-        } catch (IOException e) {
-            response.exception = e;
+            replayGateway.loadReplay(replayViewer, request.replayConnection);
+            response.success = true;
+        } catch (ExternalServiceException e) {
             response.success = false;
+            response.exception = e;
         }
-        }).start();
     }
 
     public static class Request {
 
-        private final InputStream stream;
+        private final ReplayConnection replayConnection;
         private final Observer observer;
 
-        public Request(InputStream stream, Observer observer) {
-            this.stream = stream;
+        public Request(ReplayConnection replayConnection, Observer observer) {
+            this.replayConnection = replayConnection;
             this.observer = observer;
         }
     }
@@ -56,7 +47,7 @@ public class ViewReplayUsecase {
         public boolean success;
     }
 
-    private class Replay extends Observable{
+    public static class ReplayViewer extends Observable {
         List list = new ArrayList<String>();
         public void addLine(String line) {
             list.add(line);
