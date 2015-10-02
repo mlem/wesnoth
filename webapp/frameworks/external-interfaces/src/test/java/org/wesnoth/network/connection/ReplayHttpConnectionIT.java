@@ -8,7 +8,7 @@ import java.io.InputStream;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ReplayHttpConnectionTest {
+public class ReplayHttpConnectionIT {
 
     static String convertStreamToString(java.io.InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
@@ -17,7 +17,7 @@ public class ReplayHttpConnectionTest {
 
     @Test
     public void test() throws ExternalServiceException {
-        ReplayHttpConnection replayHttpConnection = new ReplayHttpConnection("/1.12/20150921/");
+        ReplayHttpConnection replayHttpConnection = new ReplayHttpConnection("http://replays.wesnoth.org/1.12/20150921/");
         InputStream inputStream = replayHttpConnection.connect();
         String result = convertStreamToString(inputStream);
 

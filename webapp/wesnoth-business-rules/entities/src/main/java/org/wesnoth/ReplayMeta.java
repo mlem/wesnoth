@@ -1,6 +1,5 @@
-package org.wesnoth.usecase;
+package org.wesnoth;
 
-import org.wesnoth.UserName;
 import org.wesnoth.gateway.replays.Compression;
 
 import java.net.URI;

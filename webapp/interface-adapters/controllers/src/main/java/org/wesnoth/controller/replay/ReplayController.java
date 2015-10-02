@@ -3,8 +3,8 @@ package org.wesnoth.controller.replay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.wesnoth.ReplayMeta;
 import org.wesnoth.gateway.replays.ReplayGatewayImpl;
-import org.wesnoth.usecase.ReplayMeta;
 import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
 import java.util.ArrayList;
@@ -20,9 +20,9 @@ public class ReplayController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ReplayController.class);
 
     public static String intToARGB(int i) {
-        return Integer.toHexString(((i >> 16) & 0xFF)) +
-                Integer.toHexString(((i >> 8) & 0xFF)) +
-                Integer.toHexString((i & 0xFF));
+        return Integer.toHexString(i >> 16 & 0xFF) +
+                Integer.toHexString(i >> 8 & 0xFF) +
+                Integer.toHexString(i & 0xFF);
     }
 
     public List<ReplayMetaDto> showList(ListReplaysUsecase.Request request) {

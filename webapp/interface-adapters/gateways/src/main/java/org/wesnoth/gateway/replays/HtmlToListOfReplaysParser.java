@@ -2,8 +2,8 @@ package org.wesnoth.gateway.replays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wesnoth.ReplayMeta;
 import org.wesnoth.UserName;
-import org.wesnoth.usecase.ReplayMeta;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,11 +24,11 @@ import java.util.stream.Stream;
 
 public class HtmlToListOfReplaysParser {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(HtmlToListOfReplaysParser.class);
-    private final static SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
-    private final static Pattern PATTERN = Pattern.compile("<tr><td valign=\"top\"><img src=\"\\/icons\\/unknown.gif\" alt=\"\\[\\s*]\"><\\/td><td><a href=\\\"([^\"]*)\">([^<]*)<\\/a><\\/td><td align=\"right\">([^<]*)<\\/td><td align=\"right\">([^<]*)<\\/td><td><i>title<\\/i>: <b>([^<]*)<\\/b>\\s<i>era<\\/i>: <b>([^<]*)<\\/b> <i>players<\\/i>:([^<]*)");
-    private final static Pattern ID_AND_ZIP_PATTERN = Pattern.compile(".*\\(([^)]+)\\)\\.(gz|bz)");
-    private final static Pattern SIZE_PATTERN = Pattern.compile("([0-9\\.]*)([MK])");
+    private static final Logger LOGGER = LoggerFactory.getLogger(HtmlToListOfReplaysParser.class);
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy HH:mm");
+    private static final Pattern PATTERN = Pattern.compile("<tr><td valign=\"top\"><img src=\"\\/icons\\/unknown.gif\" alt=\"\\[\\s*]\"><\\/td><td><a href=\\\"([^\"]*)\">([^<]*)<\\/a><\\/td><td align=\"right\">([^<]*)<\\/td><td align=\"right\">([^<]*)<\\/td><td><i>title<\\/i>: <b>([^<]*)<\\/b>\\s<i>era<\\/i>: <b>([^<]*)<\\/b> <i>players<\\/i>:([^<]*)");
+    private static final Pattern ID_AND_ZIP_PATTERN = Pattern.compile(".*\\(([^)]+)\\)\\.(gz|bz)");
+    private static final Pattern SIZE_PATTERN = Pattern.compile("([0-9\\.]*)([MK])");
 
 
     public List<ReplayMeta> parseStreamToListOfReplays(InputStream inputStream, String currentUrl) throws
@@ -88,9 +88,9 @@ public class HtmlToListOfReplaysParser {
                 sizeAsInt = Integer.parseInt(without);
             }
             String foundUnit = sizeMatcher.group(2);
-            if (foundUnit.equals("K")) {
+            if ("K".equals(foundUnit)) {
                 replaySize = (int) (sizeAsInt * 102.4);
-            } else if (foundUnit.equals("M")) {
+            } else if ("M".equals(foundUnit)) {
                 replaySize = (int) (sizeAsInt * 102.4) * 1024;
             }
 

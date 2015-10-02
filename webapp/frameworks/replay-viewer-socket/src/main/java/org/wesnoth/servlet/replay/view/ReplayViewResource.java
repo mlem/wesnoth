@@ -1,5 +1,7 @@
 package org.wesnoth.servlet.replay.view;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -16,6 +18,8 @@ import java.util.Observer;
 public class ReplayViewResource implements Observer{
 
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReplayViewResource.class);
+
     @Autowired
     private SimpMessagingTemplate template;
 
@@ -24,7 +28,7 @@ public class ReplayViewResource implements Observer{
 
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
-    public String greeting(String replayUri) throws Exception {
+    public String greeting(String replayUri) {
 
             try {
                 String decodedUrl = URLDecoder.decode(replayUri.replaceAll("\\+", "%2b"), "UTF-8");
@@ -33,8 +37,7 @@ public class ReplayViewResource implements Observer{
                 controller.viewReplay(replayHttpConnection, this);
 
             } catch (IOException e) {
-                // TODO: don't print stacktrace. LOG or do something else. Maybe return something to the WebSocket
-                e.printStackTrace();
+                LOGGER.error("problem viewing the replay.", e);
             }
         return "Loading, Replay from URL " + replayUri + "!";
     }

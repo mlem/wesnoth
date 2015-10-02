@@ -3,10 +3,10 @@ package org.wesnoth.gateway.replays;
 import org.itadaki.bzip2.BZip2InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wesnoth.ReplayMeta;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
-import org.wesnoth.usecase.ReplayMeta;
-import org.wesnoth.usecase.replay.ViewReplayUsecase;
+import org.wesnoth.usecase.replay.ReplayLoader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,9 +17,9 @@ import java.util.List;
 
 public class ReplayGatewayImpl implements ReplayGateway {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(ReplayGateway.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReplayGateway.class);
 
-    private final static HtmlToListOfReplaysParser parser = new HtmlToListOfReplaysParser();
+    private static final HtmlToListOfReplaysParser parser = new HtmlToListOfReplaysParser();
 
     @Override
     public List<ReplayMeta> listReplays(ReplayConnection replayConnection) throws ExternalServiceException {
@@ -36,15 +36,15 @@ public class ReplayGatewayImpl implements ReplayGateway {
     }
 
     @Override
-    public void loadReplay(ViewReplayUsecase.ReplayViewer replayViewer, ReplayConnection replayConnection) throws ExternalServiceException {
+    public ReplayLoader loadReplay(ReplayLoader replayLoader, ReplayConnection replayConnection) throws ExternalServiceException {
 
-        String line = null;
+        String line;
         try (InputStream inputStream = replayConnection.connect();
              BZip2InputStream stream = new BZip2InputStream(inputStream, false);
              BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream))) {
             line = bufferedReader.readLine();
             while (line != null) {
-                replayViewer.addLine(line);
+                replayLoader.addLine(line);
                 line = bufferedReader.readLine();
             }
         } catch (IOException e) {
@@ -52,7 +52,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
         } catch (ExternalServiceException e) {
             LOGGER.error("problem", e);
         }
-
+        return replayLoader;
     }
 
 }

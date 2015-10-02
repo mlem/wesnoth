@@ -1,5 +1,7 @@
 package org.wesnoth.tools;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.wesnoth.network.compression.GzipUnzip;
 import org.wesnoth.network.protocol.ArrayTrimmer;
 import org.wesnoth.network.protocol.SizeConverter;
@@ -10,16 +12,21 @@ import java.io.IOException;
 
 public class WiresharkConverterCLI {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(WiresharkConverterCLI.class);
+
+    private WiresharkConverterCLI() {
+    }
+
     public static void main(String ... args) {
         byte[] bytes = WiresharkByteConverter.hexStringToByteArray(args[0]);
         int packetSize = SizeConverter.convertFirstFourBytesToSize(bytes);
-        System.out.println("Packetsize: " + packetSize);
+        LOGGER.info("Packetsize: " + packetSize);
         try {
-            System.out.println("Content:");
+            LOGGER.info("Content:");
             String unzip = new GzipUnzip().unzip(new ByteArrayInputStream(ArrayTrimmer.skipFirstFourBytes(bytes)));
-            System.out.println(unzip);
+            LOGGER.info(unzip);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Problem with unzip.", e);
         }
 
     }

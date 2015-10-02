@@ -1,6 +1,7 @@
 package org.wesnoth.usecase;
 
 import org.junit.Test;
+import org.wesnoth.ReplayMeta;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;

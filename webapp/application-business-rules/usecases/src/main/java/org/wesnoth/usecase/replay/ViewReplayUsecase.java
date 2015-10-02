@@ -1,13 +1,12 @@
 package org.wesnoth.usecase.replay;
 
+import com.google.common.base.Stopwatch;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.TimeUnit;
 
 public class ViewReplayUsecase {
 
@@ -19,11 +18,13 @@ public class ViewReplayUsecase {
 
     public void execute(Request request, Response response) {
 
-        ReplayViewer replayViewer = new ReplayViewer();
-        replayViewer.registerObserver(request.observer);
+        ReplayLoader replayLoader = new ReplayLoader();
+        replayLoader.registerObserver(request.observer);
 
         try {
-            replayGateway.loadReplay(replayViewer, request.replayConnection);
+            Stopwatch timer = Stopwatch.createStarted();
+            ReplayLoader loadedReplay = replayGateway.loadReplay(replayLoader, request.replayConnection);
+            replayLoader.loadingFinished(timer.stop().elapsed(TimeUnit.MILLISECONDS));
             response.success = true;
         } catch (ExternalServiceException e) {
             response.success = false;
@@ -43,21 +44,16 @@ public class ViewReplayUsecase {
     }
 
     public static class Response {
-        public Exception exception;
-        public boolean success;
-    }
+        private Exception exception;
+        private boolean success;
 
-    public static class ReplayViewer extends Observable {
-        List list = new ArrayList<String>();
-        public void addLine(String line) {
-            list.add(line);
-            setChanged();
-            notifyObservers(line);
-            clearChanged();
+        public Exception getException() {
+            return exception;
         }
 
-        public void registerObserver(Observer observer) {
-            addObserver(observer);
+        public boolean isSuccess() {
+            return success;
         }
     }
+
 }
