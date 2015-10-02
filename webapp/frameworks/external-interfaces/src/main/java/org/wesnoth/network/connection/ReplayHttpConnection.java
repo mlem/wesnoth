@@ -24,7 +24,7 @@ public class ReplayHttpConnection implements ReplayConnection {
     }
 
     @Override
-    public InputStream connectAndExecute() throws ExternalServiceException {
+    public InputStream connect() throws ExternalServiceException {
         BasicHttpParams params = new BasicHttpParams();
         params.setParameter("http.useragent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36");
         HttpClient httpClient = new DefaultHttpClient(params);

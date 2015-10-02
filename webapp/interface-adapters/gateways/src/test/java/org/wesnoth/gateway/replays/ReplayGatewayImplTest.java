@@ -19,7 +19,7 @@ public class ReplayGatewayImplTest {
         ReplayGateway replayGateway = new ReplayGatewayImpl();
 
         ReplayConnection replayConnection = mock(ReplayConnection.class);
-        when(replayConnection.connectAndExecute()).thenReturn(getClass().getResourceAsStream("replays_1.12_20150921.html"));
+        when(replayConnection.connect()).thenReturn(getClass().getResourceAsStream("replays_1.12_20150921.html"));
         when(replayConnection.currentUrl()).thenReturn("replays.wesnoth.org/1.12/20150921/");
 
         List<ReplayInfo> replays = replayGateway.listReplays(replayConnection);

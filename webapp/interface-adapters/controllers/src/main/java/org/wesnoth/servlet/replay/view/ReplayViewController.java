@@ -8,8 +8,8 @@ import java.util.Observer;
 @Service
 public class ReplayViewController {
     public void consumeStream(InputStream stream, Observer observer) {
-        ReplayViewUsecase.Response response = new ReplayViewUsecase.Response();
-        new ReplayViewUsecase(new ReplayViewUsecase.Request(stream, observer), response)
+        ViewReplayUsecase.Response response = new ViewReplayUsecase.Response();
+        new ViewReplayUsecase(new ViewReplayUsecase.Request(stream, observer), response)
         .execute();
 
     }

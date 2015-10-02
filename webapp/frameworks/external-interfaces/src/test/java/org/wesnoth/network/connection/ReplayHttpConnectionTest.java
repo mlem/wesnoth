@@ -18,7 +18,7 @@ public class ReplayHttpConnectionTest {
     @Test
     public void test() throws ExternalServiceException {
         ReplayHttpConnection replayHttpConnection = new ReplayHttpConnection("/1.12/20150921/");
-        InputStream inputStream = replayHttpConnection.connectAndExecute();
+        InputStream inputStream = replayHttpConnection.connect();
         String result = convertStreamToString(inputStream);
 
         String expected = convertStreamToString(getClass().getResourceAsStream("replays_1.12_20150921.html"));

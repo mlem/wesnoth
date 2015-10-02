@@ -5,7 +5,7 @@ import org.wesnoth.connection.ExternalServiceException;
 import java.io.InputStream;
 
 public interface ReplayConnection {
-    InputStream connectAndExecute() throws ExternalServiceException;
+    InputStream connect() throws ExternalServiceException;
 
     String currentUrl();
 }

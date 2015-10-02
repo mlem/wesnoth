@@ -36,7 +36,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
     public List<ReplayInfo> listReplays(ReplayConnection replayConnection) throws ExternalServiceException {
         List<ReplayInfo> replayInfos;
 
-        try (InputStream inputStream = replayConnection.connectAndExecute()) {
+        try (InputStream inputStream = replayConnection.connect()) {
             replayInfos = parseStreamToListOfReplays(inputStream, replayConnection.currentUrl());
         } catch (IOException e) {
             throw new ExternalServiceException("Problem during read of stream", e);

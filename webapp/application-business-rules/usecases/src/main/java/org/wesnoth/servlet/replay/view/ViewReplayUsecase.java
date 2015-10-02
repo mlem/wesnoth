@@ -9,22 +9,22 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ReplayViewUsecase {
+public class ViewReplayUsecase {
 
     private final Request request;
     private final Response response;
 
-    public ReplayViewUsecase(Request request, Response response) {
+    public ViewReplayUsecase(Request request, Response response) {
         this.request = request;
         this.response = response;
     }
 
     public void execute() {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.stream));
 
         Replay replay = new Replay();
         replay.registerObserver(request.observer);
 
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.stream));
         new Thread(() -> {
         String line = null;
         try {
