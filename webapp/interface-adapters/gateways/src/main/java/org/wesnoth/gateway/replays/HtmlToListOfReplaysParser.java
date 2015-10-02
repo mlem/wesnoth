@@ -3,7 +3,7 @@ package org.wesnoth.gateway.replays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wesnoth.UserName;
-import org.wesnoth.usecase.ReplayInfo;
+import org.wesnoth.usecase.ReplayMeta;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,24 +31,24 @@ public class HtmlToListOfReplaysParser {
     private final static Pattern SIZE_PATTERN = Pattern.compile("([0-9\\.]*)([MK])");
 
 
-    public List<ReplayInfo> parseStreamToListOfReplays(InputStream inputStream, String currentUrl) throws
+    public List<ReplayMeta> parseStreamToListOfReplays(InputStream inputStream, String currentUrl) throws
             IOException, URISyntaxException {
-        List<ReplayInfo> replayInfos = new ArrayList<>();
+        List<ReplayMeta> replayMetas = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         String readLine = br.readLine();
         while (readLine != null) {
             Matcher matcher = PATTERN.matcher(readLine);
             if (matcher.find()) {
-                ReplayInfo replayInfo = convertToReplayInfo(matcher, currentUrl);
-                replayInfos.add(replayInfo);
+                ReplayMeta replayMeta = convertToReplayInfo(matcher, currentUrl);
+                replayMetas.add(replayMeta);
 
             }
             readLine = br.readLine();
         }
-        return replayInfos;
+        return replayMetas;
     }
 
-    private ReplayInfo convertToReplayInfo(Matcher matcher, String currentUrl) throws URISyntaxException {
+    private ReplayMeta convertToReplayInfo(Matcher matcher, String currentUrl) throws URISyntaxException {
         String downloadLink = currentUrl + matcher.group(1);
         String filename = matcher.group(2);
 
@@ -101,7 +101,7 @@ public class HtmlToListOfReplaysParser {
         String players = matcher.group(7);
         String[] splittedPlayers = players.split(",");
         List<UserName> playersOfReplay = Stream.of(splittedPlayers).map(String::trim).map(UserName::new).collect(Collectors.toList());
-        return new ReplayInfo(new URI(downloadLink), filename, recordedDate, replaySize, gameName, era, playersOfReplay, mapName, replayId, compression);
+        return new ReplayMeta(new URI(downloadLink), filename, recordedDate, replaySize, gameName, era, playersOfReplay, mapName, replayId, compression);
     }
 
 }

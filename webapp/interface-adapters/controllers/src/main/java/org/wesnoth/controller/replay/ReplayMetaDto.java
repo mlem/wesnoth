@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
-public class ReplayInfoDto {
+public class ReplayMetaDto {
     private final URI downloadUri;
     private final String filename;
     private final Date recordedDate;
@@ -15,7 +15,7 @@ public class ReplayInfoDto {
     private String mapName;
     private Integer replayId;
 
-    public ReplayInfoDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<PlayerDto> players, String mapName, Integer replayId) {
+    public ReplayMetaDto(URI downloadUri, String filename, Date recordedDate, String replaySize, String gameName, String era, List<PlayerDto> players, String mapName, Integer replayId) {
         this.downloadUri = downloadUri;
         this.filename = filename;
         this.recordedDate = recordedDate;

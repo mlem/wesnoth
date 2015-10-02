@@ -3,7 +3,7 @@ package org.wesnoth.usecase.replay;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;
-import org.wesnoth.usecase.ReplayInfo;
+import org.wesnoth.usecase.ReplayMeta;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,7 +18,7 @@ public class ListReplaysUsecase {
 
     public void execute(Request request, Response response) {
         try {
-            response.replayInfos = replayGateway.listReplays(request.replayConnection());
+            response.replayMetas = replayGateway.listReplays(request.replayConnection());
             response.success = true;
         } catch (ExternalServiceException e) {
             response.exception = e;
@@ -42,11 +42,11 @@ public class ListReplaysUsecase {
     public static class Response {
 
         public Exception exception;
-        private List<ReplayInfo> replayInfos;
+        private List<ReplayMeta> replayMetas;
         private boolean success;
 
-        public Collection<ReplayInfo> foundReplays() {
-            return replayInfos;
+        public Collection<ReplayMeta> foundReplays() {
+            return replayMetas;
         }
 
         public boolean success() {

@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
-import org.wesnoth.usecase.ReplayInfo;
+import org.wesnoth.usecase.ReplayMeta;
 import org.wesnoth.usecase.replay.ViewReplayUsecase;
 
 import java.io.BufferedReader;
@@ -22,17 +22,17 @@ public class ReplayGatewayImpl implements ReplayGateway {
     private final static HtmlToListOfReplaysParser parser = new HtmlToListOfReplaysParser();
 
     @Override
-    public List<ReplayInfo> listReplays(ReplayConnection replayConnection) throws ExternalServiceException {
-        List<ReplayInfo> replayInfos;
+    public List<ReplayMeta> listReplays(ReplayConnection replayConnection) throws ExternalServiceException {
+        List<ReplayMeta> replayMetas;
 
         try (InputStream inputStream = replayConnection.connect()) {
-            replayInfos = parser.parseStreamToListOfReplays(inputStream, replayConnection.currentUrl());
+            replayMetas = parser.parseStreamToListOfReplays(inputStream, replayConnection.currentUrl());
         } catch (IOException e) {
             throw new ExternalServiceException("Problem during read of stream", e);
         } catch (URISyntaxException e) {
             throw new ExternalServiceException("Couldn't create URI from link", e);
         }
-        return replayInfos;
+        return replayMetas;
     }
 
     @Override

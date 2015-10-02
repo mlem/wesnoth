@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.wesnoth.gateway.replays.ReplayGatewayImpl;
-import org.wesnoth.usecase.ReplayInfo;
+import org.wesnoth.usecase.ReplayMeta;
 import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ReplayController {
                 Integer.toHexString((i & 0xFF));
     }
 
-    public List<ReplayInfoDto> showList(ListReplaysUsecase.Request request) {
+    public List<ReplayMetaDto> showList(ListReplaysUsecase.Request request) {
         ListReplaysUsecase listReplaysUsecase = new ListReplaysUsecase(new ReplayGatewayImpl());
         ListReplaysUsecase.Response response = new ListReplaysUsecase.Response();
         listReplaysUsecase.execute(request, response);
@@ -34,16 +34,16 @@ public class ReplayController {
             // TODO: don't return empty list. Return something, that the UI can handle. Maybe throw an exception.
             return new ArrayList<>();
         }
-        Collection<ReplayInfo> replayInfos = response.foundReplays();
+        Collection<ReplayMeta> replayMetas = response.foundReplays();
 
-        return replayInfos.stream().map(replayInfo -> new ReplayInfoDto(replayInfo.getDownloadUri(),
+        return replayMetas.stream().map(replayInfo -> new ReplayMetaDto(replayInfo.getDownloadUri(),
                 replayInfo.getFilename(),
                 replayInfo.getRecordedDate(),
                 replayInfo.getReplaySize() / 1024 + "K",
                 escapeHtml4(replayInfo.getGameName()),
                 replayInfo.getEra(),
                 replayInfo.getPlayers().stream()
-                        .map(player -> new ReplayInfoDto.PlayerDto(
+                        .map(player -> new ReplayMetaDto.PlayerDto(
                                 escapeHtml4(player.getUsername()),
                                 intToARGB(player.getUsername().hashCode())))
                         .collect(Collectors.toList()),

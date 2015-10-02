@@ -7,7 +7,7 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
-public class ReplayInfo {
+public class ReplayMeta {
     private final URI downloadUri;
     private final String filename;
     private final Date recordedDate;
@@ -15,11 +15,11 @@ public class ReplayInfo {
     private final String gameName;
     private final String era;
     private final List<UserName> players;
-    private String mapName;
     private final Integer replayId;
     private final Compression compression;
+    private String mapName;
 
-    public ReplayInfo(URI downloadUri, String filename, Date recordedDate, int replaySize, String gameName, String era, List<UserName> players, String mapName, Integer replayId, Compression compression) {
+    public ReplayMeta(URI downloadUri, String filename, Date recordedDate, int replaySize, String gameName, String era, List<UserName> players, String mapName, Integer replayId, Compression compression) {
         this.downloadUri = downloadUri;
         this.filename = filename;
         this.recordedDate = recordedDate;

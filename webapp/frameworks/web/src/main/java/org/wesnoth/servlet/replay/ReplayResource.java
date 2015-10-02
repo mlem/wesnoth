@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.wesnoth.controller.replay.ReplayController;
-import org.wesnoth.controller.replay.ReplayInfoDto;
+import org.wesnoth.controller.replay.ReplayMetaDto;
 import org.wesnoth.network.connection.ReplayHttpConnection;
 import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
@@ -24,9 +24,9 @@ public class ReplayResource {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView listReplays() {
 
-        List<ReplayInfoDto> replayInfoDtos = replayController.showList(new ListReplaysUsecase.Request(new ReplayHttpConnection("http://replays.wesnoth.org/1.12/20150921/")));
+        List<ReplayMetaDto> replayMetaDtos = replayController.showList(new ListReplaysUsecase.Request(new ReplayHttpConnection("http://replays.wesnoth.org/1.12/20150921/")));
 
-        return new ModelAndView("replays", "replayInfos", replayInfoDtos);
+        return new ModelAndView("replays", "replayInfos", replayMetaDtos);
     }
 
     @RequestMapping(value = "/view/{replayId}", method = RequestMethod.POST)

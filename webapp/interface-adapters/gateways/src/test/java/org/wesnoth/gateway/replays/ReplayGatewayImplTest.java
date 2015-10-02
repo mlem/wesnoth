@@ -3,7 +3,7 @@ package org.wesnoth.gateway.replays;
 import org.junit.Test;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
-import org.wesnoth.usecase.ReplayInfo;
+import org.wesnoth.usecase.ReplayMeta;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class ReplayGatewayImplTest {
         when(replayConnection.connect()).thenReturn(getClass().getResourceAsStream("replays_1.12_20150921.html"));
         when(replayConnection.currentUrl()).thenReturn("replays.wesnoth.org/1.12/20150921/");
 
-        List<ReplayInfo> replays = replayGateway.listReplays(replayConnection);
+        List<ReplayMeta> replays = replayGateway.listReplays(replayConnection);
 
         assertThat(replays.size(), is(559));
     }
