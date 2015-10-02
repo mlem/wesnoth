@@ -1,8 +1,9 @@
-package org.wesnoth.usecase;
+package org.wesnoth.usecase.replay;
 
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;
+import org.wesnoth.usecase.ReplayInfo;
 
 import java.util.Collection;
 import java.util.List;
@@ -40,9 +41,9 @@ public class ListReplaysUsecase {
 
     public static class Response {
 
+        public Exception exception;
         private List<ReplayInfo> replayInfos;
         private boolean success;
-        public Exception exception;
 
         public Collection<ReplayInfo> foundReplays() {
             return replayInfos;

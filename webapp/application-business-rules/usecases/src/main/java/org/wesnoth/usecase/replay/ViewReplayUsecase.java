@@ -1,4 +1,4 @@
-package org.wesnoth.servlet.replay.view;
+package org.wesnoth.usecase.replay;
 
 import java.io.BufferedReader;
 import java.io.IOException;

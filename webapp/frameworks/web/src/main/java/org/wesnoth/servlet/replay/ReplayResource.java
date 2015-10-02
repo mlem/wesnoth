@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.wesnoth.controller.replay.ReplayController;
 import org.wesnoth.controller.replay.ReplayInfoDto;
 import org.wesnoth.network.connection.ReplayHttpConnection;
-import org.wesnoth.usecase.ListReplaysUsecase;
+import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
 import java.util.List;
 

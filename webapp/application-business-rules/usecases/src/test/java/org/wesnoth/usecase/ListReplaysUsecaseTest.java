@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;
+import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
 import java.util.Arrays;
 

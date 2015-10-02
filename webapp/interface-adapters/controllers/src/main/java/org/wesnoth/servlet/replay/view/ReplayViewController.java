@@ -1,6 +1,7 @@
 package org.wesnoth.servlet.replay.view;
 
 import org.springframework.stereotype.Service;
+import org.wesnoth.usecase.replay.ViewReplayUsecase;
 
 import java.io.InputStream;
 import java.util.Observer;

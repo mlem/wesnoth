@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.wesnoth.gateway.replays.ReplayGatewayImpl;
-import org.wesnoth.usecase.ListReplaysUsecase;
 import org.wesnoth.usecase.ReplayInfo;
+import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
 import java.util.ArrayList;
 import java.util.Collection;
