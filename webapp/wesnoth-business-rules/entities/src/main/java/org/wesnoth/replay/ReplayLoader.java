@@ -1,6 +1,5 @@
-package org.wesnoth.usecase.replay;
+package org.wesnoth.replay;
 
-import org.wesnoth.gateway.replays.Replay;
 import org.wesnoth.wml.WMLTag;
 
 import java.util.*;
@@ -42,7 +41,7 @@ public class ReplayLoader extends Observable {
         return root;
     }
 
-    public enum Event implements org.wesnoth.usecase.replay.Event {
+    public enum Event implements org.wesnoth.Event {
         LOADED;
     }
 

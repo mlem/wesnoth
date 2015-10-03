@@ -1,9 +1,9 @@
 package org.wesnoth.usecase.replay;
 
-import org.wesnoth.ReplayMeta;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.ReplayGateway;
+import org.wesnoth.replay.ReplayMeta;
 
 import java.util.Collection;
 import java.util.List;

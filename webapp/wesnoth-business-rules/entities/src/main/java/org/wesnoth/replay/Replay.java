@@ -1,4 +1,4 @@
-package org.wesnoth.gateway.replays;
+package org.wesnoth.replay;
 
 import org.wesnoth.wml.WMLTag;
 
@@ -62,7 +62,7 @@ public class Replay extends Observable {
         return wmlTag.getAttribute("version");
     }
 
-    public enum Event implements org.wesnoth.usecase.replay.Event {
+    public enum Event implements org.wesnoth.Event {
         FINISH;
     }
 

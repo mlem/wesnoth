@@ -1,10 +1,12 @@
 package org.wesnoth.usecase.replay;
 
 import org.junit.Test;
+import org.wesnoth.Event;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
-import org.wesnoth.gateway.replays.Replay;
 import org.wesnoth.gateway.replays.ReplayGateway;
+import org.wesnoth.replay.Replay;
+import org.wesnoth.replay.ReplayLoader;
 import org.wesnoth.wml.WMLTag;
 
 import java.util.ArrayList;

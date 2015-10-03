@@ -3,8 +3,8 @@ package org.wesnoth.controller.replay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.wesnoth.ReplayMeta;
 import org.wesnoth.gateway.replays.ReplayGatewayImpl;
+import org.wesnoth.replay.ReplayMeta;
 import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
 import java.util.ArrayList;
