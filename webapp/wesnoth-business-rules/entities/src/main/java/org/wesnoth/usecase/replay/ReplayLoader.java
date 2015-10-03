@@ -1,11 +1,9 @@
 package org.wesnoth.usecase.replay;
 
 import org.wesnoth.gateway.replays.Replay;
+import org.wesnoth.wml.WMLTag;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class ReplayLoader extends Observable {
     List<String> list = new ArrayList<>();
@@ -25,11 +23,27 @@ public class ReplayLoader extends Observable {
     }
 
     public Replay toReplay() {
+        WMLTag wmlTag = convertTo("root", list.iterator());
+        return new Replay(wmlTag);
+    }
 
-        return new Replay();
+    public WMLTag convertTo(String tagName, Iterator<String> iterator) {
+        WMLTag root = new WMLTag(tagName);
+        while (iterator.hasNext()) {
+            String line = iterator.next();
+            if (line.contains("=")) {
+                root.addAttribute(line.split("=")[0], line.split("=")[1].replace("\"", ""));
+            } else if (line.contains("[/") && line.contains("]")) {
+                return root;
+            } else if (line.contains("[") && line.contains("]")) {
+                root.addTag(convertTo(line.replaceAll("\\[", "").replaceAll("\\]", ""), iterator));
+            }
+        }
+        return root;
     }
 
     public enum Event implements org.wesnoth.usecase.replay.Event {
         LOADED;
     }
+
 }

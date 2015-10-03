@@ -5,6 +5,7 @@ import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.gateway.replays.Replay;
 import org.wesnoth.gateway.replays.ReplayGateway;
+import org.wesnoth.wml.WMLTag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class ViewReplayUsecaseTest implements Observer {
     @Test
     public void test() throws ExternalServiceException {
         ReplayGateway replayGateway = mock(ReplayGateway.class);
-        when(replayGateway.loadReplay(anyObject(), anyObject())).thenReturn(new Replay());
+        when(replayGateway.loadReplay(anyObject(), anyObject())).thenReturn(new Replay(new WMLTag("root")));
         ViewReplayUsecase viewReplayUsecase = new ViewReplayUsecase(replayGateway);
         ViewReplayUsecase.Response response = new ViewReplayUsecase.Response();
         ReplayConnection replayConnection = mock(ReplayConnection.class);

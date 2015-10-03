@@ -1,0 +1,936 @@
+campaign_type="multiplayer"
+difficulty="NORMAL"
+label="2p — Silverhead Crossing Turn 1"
+mp_game_title="ps Partie"
+random_seed="11232"
+version="1.12.0"
+[replay]
+	[command]
+		[start]
+		[/start]
+	[/command]
+
+	[command]
+		sent=""
+		[init_side]
+			side_number=1
+		[/init_side]
+		[checkup]
+			[result]
+				random_calls=0
+			[/result]
+		[/checkup]
+	[/command]
+
+[command]
+[speak]
+id="server"
+message="po has left the game."
+[/speak]
+[/command]
+
+[command]
+[speak]
+id="server"
+message="p takes control of side 2."
+[/speak]
+[/command]
+
+[command]
+[speak]
+id="server"
+message="p undroids side 2."
+[/speak]
+[/command]
+
+	[command]
+		sent=""
+		[end_turn]
+		[/end_turn]
+	[/command]
+
+	[command]
+		sent=""
+		[init_side]
+			side_number=2
+		[/init_side]
+		[checkup]
+			[result]
+				random_calls=0
+			[/result]
+		[/checkup]
+	[/command]
+[/replay]
+[replay_start]
+current_time="5"
+description="Players must traverse all manner of terrain in pursuit of victory on this multi-fronted duel map."
+experience_modifier="70"
+id="multiplayer_Silverhead_Crossing"
+map_data="border_size=1
+usage=map
+
+Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Ww          , Ww          , Wo          , Xu          , Wo          , Ww          , Ww          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          
+Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Ww          , Wo          , Ww          , Ww          , Ww          , Ww          , Uh          , Xu          , Uh          , Xu          , Xu          , Ww          , Hh          , Wo          , Ww          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          
+Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Ww          , Ww          , Ww          , Gs^Fp       , Ww          , Xu          , Xu          , Gs^Fp       , Uu^Uf       , Gg          , Uu^Uf       , Uh          , Gs^Fp       , Mm          , Gg^Fet      , Ww          , Ww          , Ww          , Ww          , Ww          , Wo          , Ww          , Wo          , Wo          
+Wo          , Wo          , Wo          , Wo          , Wo          , Wo          , Ww          , Ww          , Hh          , Gs          , Gs^Efm      , Gg          , Gg          , Uh          , Gg          , Gg^Efm      , Wo          , Gg          , Gg          , Gs^Efm      , Gs          , Gs          , Gs          , Gs^Fp       , Hh          , Mm          , Gs^Fms      , Ww          , Ww          , Wo          , Wo          
+Wo          , Wo          , Wo          , Wo          , Ww          , Wo          , Ww          , Mm          , Gs^Fms      , Gg^Ve       , Gg          , Gg          , Wwf         , Wwf         , Wwf         , Wwf         , Wwf         , Wwf         , Wwf         , Gg          , Gg          , Gg          , Rr          , Gg^Vc       , Gg          , Wwf         , Chw         , Hh          , Gs^Fp       , Ww          , Wo          
+Wo          , Wo          , Wo          , Wo          , Ww          , Ww          , Gg          , Wwf         , Wwf         , Wwf         , Wwf         , Wwf         , Gs          , Gs^Fp       , Xu          , Uh          , Xu          , Gs^Fp       , Xu          , Wwf         , Wwf         , Gg          , Wwf         , Wwf         , Wwf         , Chw         , Rr          , Rr          , Wwf         , Ww          , Wo          
+Wo          , Wo          , Wo          , Ww          , Ww          , Gs^Fp       , Re          , Ch          , Kh          , Chw         , Gg          , Gg          , Re          , Re^Uf       , Uh          , Xu          , Ur          , Xu          , Xu          , Re^Uf       , Xu          , Wwf         , Wwf         , Gg          , Gg          , Hh          , Hh          , Wwf         , Ww          , Ww          , Xu          
+Wo          , Wo          , Wo          , Wo          , Gg          , Gg^Efm      , Hh          , Mm          , Gg          , Chw         , Re          , Uu^Vud      , Ur          , Ur          , Uu^Uf       , Gs^Fp       , Uu          , Ur          , Gs^Fp       , Xu          , Re          , Gg          , Wwf         , Gg          , Gg          , Gg^Ve       , Gs^Fet      , Wwf         , Gs^Fp       , Ww          , Xu          
+Wo          , Wo          , Ww          , Ww          , Ww          , Gg^Ve       , Wwf         , Gg^Fet      , Wwf         , Wwf         , Xu          , Uu          , Xu          , Uu^Uf       , Wwf         , Wwf         , Wwf         , Uh          , Xu          , Re          , Gg          , Gg^Ve       , Kh          , Wwf         , Gg          , Gs          , Xu          , Wwf         , Wwf         , Xu          , Xu          
+Wo          , Wo          , Ww          , Ww          , Gg          , Wwf         , Gg          , Wwf         , Xu          , Xu          , Gg          , Xu          , Gg          , Gg          , Ww          , Ww          , Ww          , Gg          , Gg          , Xu          , Gg          , Gg          , Ww          , Chw         , Ch          , Gg          , Xu          , Xu          , Uh          , Xu          , Xu          
+Ww          , Ww          , Ww          , Gg          , Gg          , Gs^Fds      , Gg          , Re          , Gs^Efm      , Gg          , Gg^Vc       , Gg          , Gs^Fms      , Ww          , Wo          , Wo          , Wo          , Ww          , Ww          , Gg          , Wwf         , Wwf         , Gg          , Ww          , Kh          , Gg          , Re          , Gs^Fp       , Re          , Xu          , Xu          
+Ww          , Ww          , Gg          , Gg          , 1 Kh        , Gg          , Re          , Re          , Mm          , Gs^Fp       , Gg          , Gs          , Ww          , Ww          , Wo          , Wo          , Wo          , Wo          , Ww          , Wwf         , Kh          , Gs^Fms      , Gg^Efm      , Gg          , Gg          , Gg          , Hh          , Re          , Gg          , Xu          , Xu          
+Ww          , Ww          , Gg^Efm      , Gg          , Ch          , Ch          , Gs          , Gs          , Gs          , Hh          , Gg          , Gs^Fp       , Ww          , Wo          , Wwf         , Wo          , Mm          , Wo          , Gs          , Ss^Vhs      , Kh          , Gs          , Hh          , Gs^Fds      , Gg          , Mm          , Gg          , Gg          , Ww          , Gg          , Gg          
+Ww          , Gg          , Gg          , Re          , Ch          , Ch          , Gg          , Gg          , Gg          , Gg          , Hh          , Ww          , Wwf         , Wwf         , Rrc         , Hh^Uf       , Rrc         , Gs^Fp       , Chw         , Chw         , Wwf         , Gg          , Gg          , Gg          , Wwf         , Gg          , Wwf         , Gs^Fp       , Ww          , Ww          , Ww          
+Ww          , Wwf         , Wwf         , Wwf         , Wwf         , Ch          , Kh          , Wwf         , Wwf         , Gg          , Wwf         , Wwf         , Chw         , Rrc         , Rrc         , Rrc         , Rrc         , Rrc         , Wwf         , Wwf         , Gs^Fp       , Wwf         , Wwf         , Wwf         , 2 Kud       , Wwf         , Gg          , Wwf         , Ww          , Wo          , Wo          
+Gs^Fds      , Gs^Fms      , Hh          , Gg          , Gg          , Wwf         , Wwf         , Wwf         , Gg          , Wwf         , Kh          , Chw         , Gs          , Gs^Fp       , Mm          , Hh^Uf       , Wwf         , Wwf         , Ww          , Ww          , Gg          , Gg          , Hh          , Gg          , Gg          , Cud         , Cud         , Gg          , Gg          , Ww          , Xu          
+Re          , Re          , Re          , Gg          , Re          , Gg          , Gs^Fp       , Mm          , Hh          , Gg          , Kh          , Ss^Vhs      , Ww          , Wo          , Wo          , Wo          , Wo          , Wo          , Ww          , Ww          , Gg          , Gg          , Gg          , Mm          , Gg          , Kud         , Cud         , Re          , Gg          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Re          , Re          , Re          , Re          , Gg          , Gg          , Wwf         , Wwf         , Ww          , Ww          , Ww          , Wo          , Ww          , Ww          , Ww          , Gs^Fms      , Gg^Efm      , Gg^Ve       , Gs^Fds      , Gg          , Cud         , Cud         , Gg          , Re          , Xu          , Xu          , Xu          
+Xu          , Xu          , Uu^Uf       , Uu^Uf       , Uh          , Gg          , Kud         , Gg          , Wwf         , Wwf         , Xu          , Ww          , Hh          , Gs^Fp       , Wo          , Ww          , Gs^Fp       , Hh          , Ww          , Gg          , Hh          , Hh          , Xu          , Re          , Re          , Gg          , Re          , Re          , Gg          , Uu^Uf       , Uu^Uf       
+Xu          , Xu          , Cud         , Wwf         , Xu          , Xu          , Wwf         , Cud         , Kud         , Xu          , Xu          , Xu          , Xu          , Cud         , Xu          , Wo          , Xu          , Cud         , Xu          , Xu          , Xu          , Xu          , Gs^Fp       , Gg          , Re          , Re          , Gg          , Gg          , Gs^Fp       , Xu          , Xu          
+Xu          , Xu          , Cud         , Wwf         , Wwf         , Ww          , Gg          , Cud         , Re          , Re          , Uu^Vu       , Ur          , Uu^Uf       , Uu^Uf       , Wwf         , Xu          , Xu          , Uu^Uf       , Uu^Uf       , Ur          , Uu^Vu       , Re          , Re          , Gg          , Re          , Gg          , Uu^Vud      , Uu^Uf       , Cud         , Xu          , Xu          
+Wwf         , Wwf         , Wwf         , Wwf         , Gs^Fp       , Gg^Vc       , Re          , Re          , Xu          , Ur          , Ur          , Uh          , Uh          , Wwf         , Wwf         , Xu          , Wwf         , Wwf         , Uh          , Uh          , Ur          , Ur          , Xu          , Re          , Gg          , Gg          , Gg          , Ur          , Cud         , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Gg          , Gg^Efm      , Mm          , Re          , Re          , Xu          , Re          , Xu          , Wwf         , Wwf         , Gg^Efm      , Wwf         , Gg          , Wwf         , Wwf         , Xu          , Re          , Xu          , Re          , Re          , Kud         , Gg          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Hh          , Gs^Fp       , Gg          , Gg          , Re          , Gg          , Gg          , Wwf         , Mm          , Hh^Fds      , Wwf         , Gg^Uf       , Hh          , Gg          , Wwf         , Gg          , Re          , Gg          , Cud         , Cud         , Cud         , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Re^Uf       , Gg          , Gs^Fms      , Gg^Ve       , Gg          , Wwf         , Gg^Uf       , Gg          , Gg          , Wwf         , Wwf         , Gg^Fms      , Gg          , Wwf         , Gg          , Gg^Ve       , Gs^Fds      , Re          , Re^Uf       , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Ur          , Xu          , Xu          , Gg^Efm      , Gg          , Wwf         , Gg          , Hh          , Gg          , Gg^Fp       , Wwf         , Gg          , Hh          , Wwf         , Wwf         , Gg^Efm      , Xu          , Xu          , Ur          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Ur          , Xu          , Rrc         , Xu          , Wwf         , Wwf         , Gs^Fp       , Gg          , Xu          , Gg          , Wwf         , Mm          , Gg^Efm      , Gg          , Wwf         , Xu          , Xu          , Ur          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Rrc         , Wwf         , Chw         , Wwf         , Rrc         , Ur          , Xu          , Xu          , Wwf         , Xu          , Xu          , Ur          , Chw         , Rrc         , Wwf         , Wwf         , Chw         , Wwf         , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Wwf         , Xu          , Xu          , Rrc         , Rrc         , Wwf         , Uh          , Wwf         , Wwf         , Wwf         , Uu^Uf       , Wwf         , Rrc         , Rrc         , Rrc         , Rrc         , Wwf         , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Wo          , Wwf         , Ur          , Chw         , Wwf         , Wwf         , Wo          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Ur          , Wo          , Uh          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Wo          , Wo          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          , Xu          
+"
+name="2p — Silverhead Crossing"
+next_underlying_unit_id="0"
+objectives="<big>" +
+#textdomain wesnoth
+	_"Victory:" +
+	"</big>
+<span foreground=""#00ff00"">&#8226; " +
+	_"Defeat enemy leader(s)" +
+	"</span>"
+observer="yes"
+random_seed="11232"
+random_start_time="yes"
+shuffle_sides="no"
+turns="-1"
+version="1.12.0"
+[event]
+
+[/event]
+[event]
+
+	name="prestart"
+	[music]
+		ms_before=12000
+		name="knolls.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="wanderer.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="battle.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="transience.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="revelation.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="loyalists.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="the_king_is_dead.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="knalgan_theme.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="the_city_falls.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="nunc_dimittis.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="breaking_the_chains.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="elvish-theme.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="legends_of_the_north.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="traveling_minstrels.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="underground.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="vengeful.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="frantic.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="the_dangerous_symphony.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="heroes_rite.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="suspense.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="the_deep_path.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="siege_of_laurelmor.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="casualties_of_war.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="silvan_sanctuary.ogg"
+	[/music]
+	[music]
+		append=yes
+		ms_before=12000
+		name="battle-epic.ogg"
+	[/music]
+[/event]
+[event]
+
+	first_time_only=no
+	name="side 3 turn"
+	[end_turn]
+	[/end_turn]
+[/event]
+[event]
+
+	name="prestart"
+	[object]
+		silent=yes
+		[filter]
+			side=3
+			x=1
+			y=1
+		[/filter]
+		[effect]
+			apply_to="attack"
+			increase_attacks=-2
+			increase_damage=296
+		[/effect]
+		[effect]
+			apply_to="new_attack"
+			damage=100
+#textdomain wesnoth-multiplayer
+			description=_"evil eye"
+			name="evil eye"
+			number=1
+			range="ranged"
+			type="arcane"
+			[specials]
+				[petrifies]
+#textdomain wesnoth-help
+					description=_"This attack petrifies the target, turning it to stone. Units that have been petrified may not move or attack."
+					id="petrifies"
+					name=_"petrifies"
+				[/petrifies]
+			[/specials]
+		[/effect]
+		[effect]
+			apply_to="new_ability"
+			[abilities]
+				[hides]
+					affect_self=yes
+					description=_"This unit can hide in deep water, and remain undetected by its enemies.
+
+Enemy units cannot see this unit while it is in deep water, except if they have units next to it. Any enemy unit that first discovers this unit immediately loses all its remaining movement."
+					description_inactive=_"This unit can hide in deep water, and remain undetected by its enemies.
+
+Enemy units cannot see this unit while it is in deep water, except if they have units next to it. Any enemy unit that first discovers this unit immediately loses all its remaining movement."
+					female_name=_"female^submerge"
+					female_name_inactive=_"female^submerge"
+					id="submerge"
+					name=_"submerge"
+					name_inactive=_"submerge"
+					[filter]
+						[filter_location]
+							terrain="Wo*^*"
+						[/filter_location]
+					[/filter]
+				[/hides]
+			[/abilities]
+		[/effect]
+		[effect]
+			apply_to="hitpoints"
+			increase=472
+			increase_total=472
+		[/effect]
+	[/object]
+[/event]
+[music]
+
+	ms_before=12000
+	name="knolls.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="wanderer.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="battle.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="transience.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="the_king_is_dead.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="knalgan_theme.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="the_city_falls.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="nunc_dimittis.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="revelation.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="loyalists.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="breaking_the_chains.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="elvish-theme.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="legends_of_the_north.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="traveling_minstrels.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="underground.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="vengeful.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="frantic.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="the_dangerous_symphony.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="heroes_rite.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="suspense.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="the_deep_path.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="siege_of_laurelmor.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="casualties_of_war.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="silvan_sanctuary.ogg"
+[/music]
+[music]
+
+	append=yes
+	ms_before=12000
+	name="battle-epic.ogg"
+[/music]
+[time]
+
+	green=-20
+	id="dawn"
+	image="misc/time-schedules/default/schedule-dawn.png"
+	name=_"Dawn"
+	red=-20
+	sound="ambient/morning.ogg"
+[/time]
+[time]
+
+	id="morning"
+	image="misc/time-schedules/default/schedule-morning.png"
+	lawful_bonus=25
+	name=_"Morning"
+[/time]
+[time]
+
+	id="afternoon"
+	image="misc/time-schedules/default/schedule-afternoon.png"
+	lawful_bonus=25
+	name=_"Afternoon"
+[/time]
+[time]
+
+	blue=-20
+	green=-20
+	id="dusk"
+	image="misc/time-schedules/default/schedule-dusk.png"
+	name=_"Dusk"
+	sound="ambient/night.ogg"
+[/time]
+[time]
+
+	blue=-10
+	green=-35
+	id="first_watch"
+	image="misc/time-schedules/default/schedule-firstwatch.png"
+	lawful_bonus=-25
+	name=_"First Watch"
+	red=-45
+[/time]
+[time]
+
+	blue=-10
+	green=-35
+	id="second_watch"
+	image="misc/time-schedules/default/schedule-secondwatch.png"
+	lawful_bonus=-25
+	name=_"Second Watch"
+	red=-45
+[/time]
+[multiplayer]
+
+	active_mods=""
+	difficulty_define=""
+	experience_modifier=70
+	hash="et4NnR.Ze71uA1.EFd4nue.aR0w0WTXYusuJHjPEqB6howSxWAH-z1Br<DO7.0fi4kGe8esrKy5qdPpJ4a9-jstOPIx5>UjUsdeA,Mb>mePGr+Em5flc5>hGr6iN78mu"
+	mp_campaign=""
+	mp_countdown=no
+	mp_countdown_action_bonus=13
+	mp_countdown_init_time=270
+	mp_countdown_reservoir_time=330
+	mp_countdown_turn_bonus=60
+	mp_era="era_default"
+	mp_fog=no
+	mp_num_turns=-1
+	mp_random_start_time=yes
+	mp_scenario="multiplayer_Silverhead_Crossing"
+	mp_scenario_name="2S – Die Furt am Silberkopf"
+	mp_shroud=no
+	mp_use_map_settings=no
+	mp_village_gold=2
+	mp_village_support=1
+	observer=yes
+	savegame=no
+	scenario="ps Partie"
+	shuffle_sides=no
+	side_users=""
+	[options]
+	[/options]
+[/multiplayer]
+[era]
+
+#textdomain wesnoth-multiplayer
+	description=_"The standard era for Wesnoth multiplayer. Consists of six factions and is generally balanced."
+	id="era_default"
+	name=_"Default"
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Custom"
+		image="units/unknown-unit.png"
+		name=_"Custom"
+	[/multiplayer_side]
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Random"
+		image="units/random-dice.png"
+		name=_"Random"
+		random_faction=yes
+	[/multiplayer_side]
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Loyalists"
+		image="units/human-loyalists/lieutenant.png"
+		leader="Lieutenant,Swordsman,Pikeman,Javelineer,Shock Trooper,Longbowman,White Mage,Red Mage"
+		name=_"Loyalists"
+		random_leader="Lieutenant,Swordsman,Pikeman,Javelineer,Longbowman,White Mage,Red Mage"
+		recruit="Cavalryman,Horseman,Spearman,Fencer,Heavy Infantryman,Bowman,Mage,Merman Fighter"
+		terrain_liked="Gg,Ww,Wo"
+		type="random"
+		[ai]
+			recruitment_pattern="fighter,fighter,fighter,archer,mixed fighter,scout"
+		[/ai]
+	[/multiplayer_side]
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Rebels"
+		image="units/elves-wood/captain.png"
+		leader="Elvish Captain,Elvish Hero,Elvish Ranger,Elvish Marksman,Elvish Druid,Elvish Sorceress,White Mage,Red Mage,Elder Wose"
+		name=_"Rebels"
+		random_leader="Elvish Captain,Elvish Hero,Elvish Ranger,Elvish Marksman,Elvish Druid,Elvish Sorceress,White Mage,Red Mage"
+		recruit="Elvish Fighter,Elvish Archer,Mage,Elvish Shaman,Elvish Scout,Wose,Merman Hunter"
+		terrain_liked="Ff,Fa,Ss,Ww"
+		type="random"
+		[ai]
+			recruitment_pattern="fighter,fighter,archer,archer,mixed fighter,healer,scout"
+		[/ai]
+	[/multiplayer_side]
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Northerners"
+		image="units/orcs/warrior.png"
+		leader="Orcish Warrior,Troll,Troll Rocklobber,Orcish Crossbowman,Orcish Slayer"
+		name=_"Northerners"
+		recruit="Orcish Grunt,Troll Whelp,Wolf Rider,Orcish Archer,Orcish Assassin,Naga Fighter,Goblin Spearman"
+		terrain_liked="Hh,Ha,Mm,Ss"
+		type="random"
+		[ai]
+			recruitment_pattern="fighter,fighter,fighter,mixed fighter,archer,scout"
+		[/ai]
+	[/multiplayer_side]
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Undead"
+		image="units/undead-necromancers/dark-sorcerer.png"
+		leader="Dark Sorcerer,Revenant,Deathblade,Bone Shooter,Necrophage"
+		name=_"Undead"
+		random_leader="Dark Sorcerer,Revenant,Deathblade,Bone Shooter"
+		recruit="Skeleton,Skeleton Archer,Walking Corpse,Ghost,Vampire Bat,Dark Adept,Ghoul"
+		terrain_liked="Ss,Hh,Ha,Ww"
+		type="random"
+		[ai]
+			recruitment_pattern="fighter,fighter,archer,fighter,scout,archer"
+		[/ai]
+	[/multiplayer_side]
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Knalgan Alliance"
+		image="units/dwarves/steelclad.png"
+		leader="Dwarvish Steelclad,Dwarvish Thunderguard,Dwarvish Stalwart,Rogue,Trapper"
+		name=_"Knalgan Alliance"
+		recruit="Dwarvish Guardsman,Dwarvish Fighter,Dwarvish Ulfserker,Dwarvish Thunderer,Thief,Poacher,Footpad,Gryphon Rider"
+		terrain_liked="Hh,Ha,Mm"
+		type="random"
+		[ai]
+			[aspect]
+				id="recruitment_pattern"
+				[facet]
+					value="fighter,fighter,fighter,mixed fighter,archer,scout"
+				[/facet]
+			[/aspect]
+		[/ai]
+	[/multiplayer_side]
+	[multiplayer_side]
+		flag_rgb="magenta"
+		id="Drakes"
+		image="units/drakes/flare.png"
+		leader="Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior,Saurian Oracle,Saurian Soothsayer"
+		name=_"Drakes"
+		random_leader="Drake Flare,Fire Drake,Drake Arbiter,Drake Thrasher,Drake Warrior"
+		recruit="Drake Burner,Drake Clasher,Drake Glider,Drake Fighter,Saurian Skirmisher,Saurian Augur"
+		terrain_liked="Hh,Ha,Ds,Ss"
+		type="random"
+	[/multiplayer_side]
+	[event]
+	[/event]
+	[event]
+		name="prestart"
+		[store_unit]
+			kill=yes
+			variable="leaders_to_make_quick"
+			[filter]
+				canrecruit=yes
+				[filter_wml]
+					max_moves=4
+				[/filter_wml]
+			[/filter]
+		[/store_unit]
+		[set_variable]
+			name="i"
+			value=0
+		[/set_variable]
+		[while]
+			[variable]
+				less_than="$leaders_to_make_quick.length"
+				name="i"
+			[/variable]
+			[do]
+				[if]
+					[variable]
+						boolean_equals=yes
+						name="leaders_to_make_quick[$i].variables.dont_make_me_quick"
+					[/variable]
+					[then]
+						[unstore_unit]
+							variable="leaders_to_make_quick[$i]"
+						[/unstore_unit]
+					[/then]
+					[else]
+						[set_variables]
+							name="temp"
+							[literal]
+								[trait]
+#textdomain wesnoth-help
+									female_name=_"female^quick"
+									id="quick"
+									male_name=_"quick"
+									[effect]
+										apply_to="movement"
+										increase=1
+									[/effect]
+									[effect]
+										apply_to="hitpoints"
+										increase_total="-5%"
+									[/effect]
+								[/trait]
+							[/literal]
+						[/set_variables]
+						[set_variables]
+							mode="append"
+							name="leaders_to_make_quick[$i].modifications.trait"
+							[insert_tag]
+								name="literal"
+								variable="temp.trait"
+							[/insert_tag]
+						[/set_variables]
+						[clear_variable]
+							name="leaders_to_make_quick[$i].max_moves,leaders_to_make_quick[$i].moves,leaders_to_make_quick[$i].max_hitpoints,leaders_to_make_quick[$i].hitpoints"
+						[/clear_variable]
+						[unstore_unit]
+							variable="leaders_to_make_quick[$i]"
+						[/unstore_unit]
+					[/else]
+				[/if]
+				[set_variable]
+					add=1
+					name="i"
+				[/set_variable]
+			[/do]
+		[/while]
+		[clear_variable]
+			name="i"
+		[/clear_variable]
+		[clear_variable]
+			name="leaders_to_make_quick,temp"
+		[/clear_variable]
+	[/event]
+	[event]
+		name="time over"
+		[lua]
+			code="
+                local _ = wesnoth.textdomain ""wesnoth-multiplayer""
+                local function all_sides()
+                    local function f(s, i)
+                        i = i + 1
+                        local t = wesnoth.sides[i]
+                        return t and i, t
+                    end
+                    return f, nil, 0
+                end
+
+                local income_factor = 5
+
+                local side_num = -1
+                local total_score = -1
+                local side_comparison = """"
+                for side, team in all_sides() do
+                    repeat -- ugly hack to convert 'break' into 'continue'
+                    if team.__cfg.hidden then
+                        break
+                    end
+                    local r, g, b = 255, 255, 255
+                    if     team.__cfg.color == 1 then r, g, b = 255,   0,   0
+                    elseif team.__cfg.color == 2 then r, g, b =   0,   0, 255
+                    elseif team.__cfg.color == 3 then r, g, b =   0, 255,   0
+                    elseif team.__cfg.color == 4 then r, g, b = 155,  48, 255
+                    elseif team.__cfg.color == 5 then r, g, b =   0,   0,   0
+                    elseif team.__cfg.color == 6 then r, g, b = 165,  42,  42
+                    elseif team.__cfg.color == 7 then r, g, b = 255, 165,   0
+                    elseif team.__cfg.color == 8 then r, g, b = 255, 255, 255
+                    elseif team.__cfg.color == 9 then r, g, b =   0, 128, 128 end
+                    if # wesnoth.get_units( { side = side } ) == 0 then
+                        side_comparison = side_comparison ..
+                            string.format( tostring( _ ""<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"") .. ""\n"",
+                                r, g, b, side)
+                        break
+                    end
+                    local income = team.total_income * income_factor
+                    local units = 0
+                    -- Calc the total unit-score here
+                    for i, unit in ipairs( wesnoth.get_units { side = side } ) do
+                        if not unit.__cfg.canrecruit then
+                            wesnoth.fire(""unit_worth"", { id = unit.id })
+                            units = units + wesnoth.get_variable(""unit_worth"")
+                        end
+                    end
+                    -- Up to here
+                    local total = units + team.gold + income
+                    side_comparison = side_comparison ..
+                        string.format( tostring( _ ""<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit score = %d  Gold = %d"") .. ""\n"" .. tostring( _ ""Grand total: <b>%d</b>"") .. ""\n"",
+                            r, g, b, side, income, units, team.gold, total)
+                    if total > total_score then
+                        color = string.format(""#%02x%02x%02x"", r, g, b)
+                        side_num = side
+                        total_score = total
+                    end
+                    until true -- end ugly hack
+                end
+                side_comparison = side_comparison ..
+                    string.format( ""\n"" .. tostring( _ ""<span foreground='%s'>Side %d</span> has the advantage.""), color, side_num)
+                wesnoth.fire(""message"", { message = side_comparison, speaker = ""narrator"", image = ""wesnoth-icon.png""})
+            "
+		[/lua]
+	[/event]
+[/era]
+[side]
+allow_changes="yes"
+allow_player="yes"
+canrecruit="yes"
+chose_random="yes"
+color="1"
+controller="network"
+current_player="p"
+faction_name="Knalgan Alliance"
+flag_rgb="magenta"
+fog="no"
+gender="male"
+gold="100"
+image="units/dwarves/steelclad.png"
+income="0"
+leader="Dwarvish Steelclad,Dwarvish Thunderguard,Dwarvish Stalwart,Rogue,Trapper"
+name="p"
+no_recruit="yes"
+player_id="p1"
+recruit="Dwarvish Guardsman,Dwarvish Fighter,Dwarvish Ulfserker,Dwarvish Thunderer,Thief,Poacher,Footpad,Gryphon Rider"
+save_id="p1"
+share_maps="no"
+share_view="yes"
+shroud="no"
+side="1"
+team_name="1"
+terrain_liked="Hh,Ha,Mm"
+type="Rogue"
+user_description="p"
+user_team_name="Team 1"
+village_gold="2"
+village_support="1"
+[ai]
+
+		villages_per_scout=8
+	[/ai]
+[ai]
+[aspect]
+id="recruitment_pattern"
+[facet]
+value="fighter,fighter,fighter,mixed fighter,archer,scout"
+[/facet]
+[/aspect]
+[/ai]
+[/side]
+[side]
+allow_changes="yes"
+allow_player="yes"
+canrecruit="yes"
+chose_random="no"
+color="2"
+controller="network"
+current_player="po"
+faction_name="Northerners"
+flag_rgb="magenta"
+fog="no"
+gender="male"
+gold="100"
+image="units/orcs/warrior.png"
+income="0"
+leader="Orcish Warrior,Troll,Troll Rocklobber,Orcish Crossbowman,Orcish Slayer"
+name="po"
+no_recruit="yes"
+player_id="po2"
+recruit="Orcish Grunt,Troll Whelp,Wolf Rider,Orcish Archer,Orcish Assassin,Naga Fighter,Goblin Spearman"
+save_id="po2"
+share_maps="no"
+share_view="yes"
+shroud="no"
+side="2"
+team_name="2"
+terrain_liked="Hh,Ha,Mm,Ss"
+type="Troll"
+user_description="po"
+user_team_name="Team 2"
+village_gold="2"
+village_support="1"
+[ai]
+
+		villages_per_scout=8
+	[/ai]
+[ai]
+recruitment_pattern="fighter,fighter,fighter,mixed fighter,archer,scout"
+[/ai]
+[/side]
+[side]
+allow_changes="yes"
+allow_player="no"
+canrecruit="no"
+chose_random="yes"
+color="5"
+controller="network_ai"
+disallow_observers="yes"
+faction_name="Northerners"
+flag_rgb="magenta"
+fog="no"
+gender="male"
+gold="100"
+hidden="yes"
+image="units/orcs/warrior.png"
+income="0"
+leader="Orcish Warrior,Troll,Troll Rocklobber,Orcish Crossbowman,Orcish Slayer"
+name="Computer 3"
+no_leader="yes"
+no_recruit="yes"
+recruit="Orcish Grunt,Troll Whelp,Wolf Rider,Orcish Archer,Orcish Assassin,Naga Fighter,Goblin Spearman"
+save_id="ai3"
+share_maps="no"
+share_view="yes"
+shroud="no"
+side="3"
+team_name="3"
+terrain_liked="Hh,Ha,Mm,Ss"
+type="Orcish Crossbowman"
+user_description="Computer 3"
+user_team_name="Team 3"
+village_gold="2"
+village_support="1"
+[unit]
+
+		name="Nani The Shapeshifter"
+		type="Tentacle of the Deep"
+		x=1
+		y=1
+	[/unit]
+[ai]
+recruitment_pattern="fighter,fighter,fighter,mixed fighter,archer,scout"
+[/ai]
+[/side]
+[/replay_start]

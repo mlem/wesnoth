@@ -1,37 +1,30 @@
 package org.wesnoth.wml;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class WMLTag {
+    private String tagName;
+    private List<WMLTag> tagList = new LinkedList<>();
+    private Map<String, String> attributes = new HashMap<>();
 
-    private String name;
-    private WMLTag parent;
-    private List<WMLTag> subTags = new ArrayList<>();
-    private String attributes;
+    public WMLTag(String tagName) {
 
-    public WMLTag(String name) {
-        this.name = name;
+        this.tagName = tagName;
     }
 
-    public void addTag(WMLTag current) {
-        subTags.add(current);
-        current.parent = this;
+    public void addAttribute(String key, String value) {
+        attributes.put(key, value);
     }
 
-    public String getName() {
-        return name;
+    public void addTag(WMLTag tag) {
+        tagList.add(tag);
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(String attributes) {
-        this.attributes = attributes;
+    public String getAttribute(String key) {
+        return attributes.get(key);
     }
 }

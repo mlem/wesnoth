@@ -7,12 +7,14 @@ import org.wesnoth.ReplayMeta;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
 import org.wesnoth.usecase.replay.ReplayLoader;
+import org.wesnoth.wml.WMLTag;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class ReplayGatewayImpl implements ReplayGateway {
@@ -41,7 +43,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
         String line;
         try (InputStream inputStream = replayConnection.connect();
              BZip2InputStream stream = new BZip2InputStream(inputStream, false);
-             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream))) {
+             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             line = bufferedReader.readLine();
             while (line != null) {
                 replayLoader.addLine(line);
@@ -53,7 +55,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
         } catch (ExternalServiceException e) {
             LOGGER.error("problem", e);
         }
-        return new Replay();
+        return new Replay(new WMLTag("root"));
     }
 
 }
