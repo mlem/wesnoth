@@ -36,7 +36,7 @@ public class ReplayGatewayImpl implements ReplayGateway {
     }
 
     @Override
-    public ReplayLoader loadReplay(ReplayLoader replayLoader, ReplayConnection replayConnection) throws ExternalServiceException {
+    public Replay loadReplay(ReplayLoader replayLoader, ReplayConnection replayConnection) throws ExternalServiceException {
 
         String line;
         try (InputStream inputStream = replayConnection.connect();
@@ -47,12 +47,13 @@ public class ReplayGatewayImpl implements ReplayGateway {
                 replayLoader.addLine(line);
                 line = bufferedReader.readLine();
             }
+            return replayLoader.toReplay();
         } catch (IOException e) {
             LOGGER.error("problem", e);
         } catch (ExternalServiceException e) {
             LOGGER.error("problem", e);
         }
-        return replayLoader;
+        return new Replay();
     }
 
 }

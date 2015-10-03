@@ -17,7 +17,7 @@ public class WesnothConnection {
     private final InetAddress wesnothAddress;
     private int port;
     private final UserName userName;
-    private Logger LOGGER = LoggerFactory.getLogger(WesnothConnection.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(WesnothConnection.class);
 
     public WesnothConnection(InetAddress wesnothAddress, int port, UserName userName) {
         this.wesnothAddress = wesnothAddress;
@@ -42,6 +42,7 @@ public class WesnothConnection {
 
         ByteBuffer readBuffer = ByteBuffer.allocate(4);
         int bytesRead = socketChannel.read(readBuffer);
+        LOGGER.debug("user " + userName + " is connecting.");
         LOGGER.debug("we read " + bytesRead + " from server");
         LOGGER.debug("response from server: " + SizeConverter.convertFirstFourBytesToSize(readBuffer.array()));
 

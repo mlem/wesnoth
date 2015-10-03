@@ -3,6 +3,7 @@ package org.wesnoth.usecase.replay;
 import com.google.common.base.Stopwatch;
 import org.wesnoth.connection.ExternalServiceException;
 import org.wesnoth.connection.replays.ReplayConnection;
+import org.wesnoth.gateway.replays.Replay;
 import org.wesnoth.gateway.replays.ReplayGateway;
 
 import java.util.Observer;
@@ -23,8 +24,13 @@ public class ViewReplayUsecase {
 
         try {
             Stopwatch timer = Stopwatch.createStarted();
-            ReplayLoader loadedReplay = replayGateway.loadReplay(replayLoader, request.replayConnection);
+            Replay loadedReplay = replayGateway.loadReplay(replayLoader, request.replayConnection);
+            loadedReplay.registerObserver(request.observer);
             replayLoader.loadingFinished(timer.stop().elapsed(TimeUnit.MILLISECONDS));
+            while(!loadedReplay.isLastStep()) {
+                loadedReplay.progress();
+            }
+            loadedReplay.finish();
             response.success = true;
         } catch (ExternalServiceException e) {
             response.success = false;

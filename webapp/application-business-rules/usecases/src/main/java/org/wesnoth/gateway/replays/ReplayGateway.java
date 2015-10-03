@@ -11,5 +11,5 @@ public interface ReplayGateway {
 
     List<ReplayMeta> listReplays(ReplayConnection replayConnection) throws ExternalServiceException;
 
-    ReplayLoader loadReplay(ReplayLoader replayLoader, ReplayConnection replayConnection) throws ExternalServiceException;
+    Replay loadReplay(ReplayLoader replayLoader, ReplayConnection replayConnection) throws ExternalServiceException;
 }

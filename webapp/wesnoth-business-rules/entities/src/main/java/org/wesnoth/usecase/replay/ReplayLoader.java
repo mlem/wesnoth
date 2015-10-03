@@ -1,5 +1,7 @@
 package org.wesnoth.usecase.replay;
 
+import org.wesnoth.gateway.replays.Replay;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -14,11 +16,20 @@ public class ReplayLoader extends Observable {
 
     public void loadingFinished(long elapsedTime) {
         setChanged();
-        notifyObservers("finished loading after " + elapsedTime + " milliseconds.");
+        notifyObservers(Event.LOADED);
         clearChanged();
     }
 
     public void registerObserver(Observer observer) {
         addObserver(observer);
+    }
+
+    public Replay toReplay() {
+
+        return new Replay();
+    }
+
+    public enum Event implements org.wesnoth.usecase.replay.Event {
+        LOADED;
     }
 }
