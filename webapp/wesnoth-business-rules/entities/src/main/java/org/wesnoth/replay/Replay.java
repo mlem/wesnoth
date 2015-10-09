@@ -67,7 +67,7 @@ public class Replay extends Observable {
                 tag -> {
                     setChanged();
                     String mapData = tag.getAttribute("map_data");
-                    String map = mapData.substring(mapData.indexOf("\n\n"));
+                    String map = mapData.substring(mapData.indexOf("\n\n")+2);
                     notifyObservers(new Map(map));
                     clearChanged();
                 }

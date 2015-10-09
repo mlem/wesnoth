@@ -46,9 +46,32 @@
 
         function showGreeting(message) {
             var response = document.getElementById('response');
+
+            var json = JSON.parse(message);
+
             var p = document.createElement('p');
             p.style.wordWrap = 'break-word';
-            p.appendChild(document.createTextNode(message));
+            if(json.payload.map !== undefined) {
+                var map = json.payload.map;
+                for(var i = 0; i < map.length; i++) {
+                    var row = map[i];
+                    var rowDiv = document.createElement('div');
+                    rowDiv.style.clear = 'both';
+                    rowDiv.style.float = 'left';
+                    rowDiv.style.display = 'block';
+                    rowDiv.style.position = 'relative';
+                    for(var j = 0; j < row.length; j++) {
+                        var tile = row[j]['tileString'];
+                        var div = document.createElement('div');
+                        div.style.float = 'left';
+                        div.appendChild(document.createTextNode(tile));
+                        rowDiv.appendChild(div);
+                    }
+                    p.appendChild(rowDiv);
+                }
+            } else {
+                p.appendChild(document.createTextNode(json.payload));
+            }
             response.appendChild(p);
         }
     </script>

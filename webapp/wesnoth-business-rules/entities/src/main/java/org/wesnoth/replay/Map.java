@@ -17,7 +17,7 @@ public class Map implements org.wesnoth.Event {
             List<Tile> rowList = new ArrayList<>();
             map.add(rowList);
             for(String tileString : row.split(",")) {
-                rowList.add(new Tile(tileString));
+                rowList.add(new Tile(tileString.trim()));
             }
         }
         return map;
