@@ -25,13 +25,14 @@ public class ViewReplayUsecase {
 
         try {
             Stopwatch timer = Stopwatch.createStarted();
-            Replay loadedReplay = replayGateway.loadReplay(replayLoader, request.replayConnection);
-            loadedReplay.registerObserver(request.observer);
+            Replay replay = replayGateway.loadReplay(replayLoader, request.replayConnection);
+            replay.registerObserver(request.observer);
             replayLoader.loadingFinished(timer.stop().elapsed(TimeUnit.MILLISECONDS));
-            while(!loadedReplay.isLastStep()) {
-                loadedReplay.progress();
+            replay.displayMap();
+            while(!replay.isLastStep()) {
+                replay.progress();
             }
-            loadedReplay.finish();
+            replay.finish();
             response.success = true;
         } catch (ExternalServiceException e) {
             response.success = false;

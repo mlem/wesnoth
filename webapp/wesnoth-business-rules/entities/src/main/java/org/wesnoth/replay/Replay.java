@@ -62,6 +62,18 @@ public class Replay extends Observable {
         return wmlTag.getAttribute("version");
     }
 
+    public void displayMap() {
+        wmlTag.findTag("replay_start").ifPresent(
+                tag -> {
+                    setChanged();
+                    String mapData = tag.getAttribute("map_data");
+                    String map = mapData.substring(mapData.indexOf("\n\n"));
+                    notifyObservers(new Map(map));
+                    clearChanged();
+                }
+        );
+    }
+
     public enum Event implements org.wesnoth.Event {
         FINISH;
     }
@@ -72,4 +84,5 @@ public class Replay extends Observable {
     public enum CampaignType {
         MULTIPLAYER;
     }
+
 }

@@ -28,10 +28,18 @@ public class ReplayLoader extends Observable {
 
     public WMLTag convertTo(String tagName, Iterator<String> iterator) {
         WMLTag root = new WMLTag(tagName);
+        String line;
         while (iterator.hasNext()) {
-            String line = iterator.next();
+            line = iterator.next();
             if (line.contains("=")) {
-                root.addAttribute(line.split("=")[0], line.split("=")[1].replace("\"", ""));
+                String key = line.split("=")[0];
+                String value = line.split("=")[1];
+                if(value.startsWith("\"") && !value.trim().equals("\"\"")) {
+                    while (iterator.hasNext() && (!value.endsWith("\"") || value.endsWith("\"\""))) {
+                        value+= "\n" + iterator.next().trim();
+                    }
+                }
+                root.addAttribute(key, value.replace("\"", ""));
             } else if (line.contains("[/") && line.contains("]")) {
                 return root;
             } else if (line.contains("[") && line.contains("]")) {

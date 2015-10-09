@@ -1,9 +1,6 @@
 package org.wesnoth.wml;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class WMLTag {
     private String tagName;
@@ -26,5 +23,9 @@ public class WMLTag {
 
     public String getAttribute(String key) {
         return attributes.get(key);
+    }
+
+    public Optional<WMLTag> findTag(String tagName) {
+        return tagList.stream().filter(wmlTag -> wmlTag.tagName.equals(tagName)).findFirst();
     }
 }
