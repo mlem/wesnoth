@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.wesnoth.controller.replay.ReplayController;
 import org.wesnoth.controller.replay.ReplayMetaDto;
 import org.wesnoth.network.connection.ReplayHttpConnection;
+import org.wesnoth.usecase.images.ImageMappingUsecase;
 import org.wesnoth.usecase.replay.ListReplaysUsecase;
 
 import java.net.URI;
@@ -20,6 +21,8 @@ public class ReplayResource {
 
     @Autowired
     private ReplayController replayController;
+    @Autowired
+    private ImageController imageController;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView listReplays() {
@@ -30,8 +33,11 @@ public class ReplayResource {
     }
 
     @RequestMapping(value = "/view/{replayId}", method = RequestMethod.POST)
-    public ModelAndView listReplays(@RequestParam("downloadUri") URI downloadUri) {
+    public ModelAndView viewReplay(@RequestParam("downloadUri") URI downloadUri) {
+        List<ImageDto> images = imageController.listImages(new ImageMappingUsecase.Request(getClass().getResourceAsStream("/data/core/terrain.cfg")));
 
-        return new ModelAndView("viewReplay", "replayUri", downloadUri);
+        ViewReplayDto viewReplayDto = new ViewReplayDto(downloadUri, images);
+        return new ModelAndView("viewReplay", "viewReplayDto", viewReplayDto);
     }
+
 }

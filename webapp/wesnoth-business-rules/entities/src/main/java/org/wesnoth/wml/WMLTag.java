@@ -1,6 +1,7 @@
 package org.wesnoth.wml;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class WMLTag {
     private String tagName;
@@ -26,6 +27,23 @@ public class WMLTag {
     }
 
     public Optional<WMLTag> findTag(String tagName) {
-        return tagList.stream().filter(wmlTag -> wmlTag.tagName.equals(tagName)).findFirst();
+        return tagList
+                .stream()
+                .filter(wmlTag -> wmlTag.tagName.equals(tagName))
+                .findFirst();
+    }
+
+    public List<WMLTag> findAllTags(org.wesnoth.usecase.images.TagType tagType) {
+        List<WMLTag> result = tagList
+                .stream()
+                .filter(wmlTag -> wmlTag.tagName.equals(tagType.name().toLowerCase()))
+                .collect(Collectors.toList());
+        return result;
+    }
+
+    public List<WMLTag> children() {
+        return tagList
+                .stream()
+                .collect(Collectors.toList());
     }
 }

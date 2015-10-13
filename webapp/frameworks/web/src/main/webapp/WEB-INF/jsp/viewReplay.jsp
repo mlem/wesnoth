@@ -22,10 +22,10 @@
         function connect() {
             var socket = new SockJS('/replays/hello');
             stompClient = Stomp.over(socket);
-            stompClient.connect({}, function(frame) {
+            stompClient.connect({}, function (frame) {
                 setConnected(true);
                 console.log('Connected: ' + frame);
-                stompClient.subscribe('/topic/greetings', function(greeting){
+                stompClient.subscribe('/topic/greetings', function (greeting) {
                     showGreeting(greeting.body);
                 });
                 sendName();
@@ -41,7 +41,7 @@
         }
 
         function sendName() {
-            stompClient.send("/app/hello", {}, "${replayUri}");
+            stompClient.send("/app/hello", {}, "${viewReplayDto.downloadUri}");
         }
 
         function showGreeting(message) {
@@ -51,18 +51,20 @@
 
             var p = document.createElement('p');
             p.style.wordWrap = 'break-word';
-            if(json.payload.map !== undefined) {
+            if (json.payload.map !== undefined) {
                 var map = json.payload.map;
-                for(var i = 0; i < map.length; i++) {
+                for (var i = 0; i < map.length; i++) {
                     var row = map[i];
                     var rowDiv = document.createElement('div');
                     rowDiv.style.clear = 'both';
                     rowDiv.style.float = 'left';
                     rowDiv.style.display = 'block';
                     rowDiv.style.position = 'relative';
-                    for(var j = 0; j < row.length; j++) {
-                        var tile = row[j]['tileString'];
+                    for (var j = 0; j < row.length; j++) {
+                        var tile = row[j]['tileString'].replace(/ /g, '_');
                         var div = document.createElement('div');
+
+                        div.classList.add(tile)
                         div.style.float = 'left';
                         div.appendChild(document.createTextNode(tile));
                         rowDiv.appendChild(div);
@@ -77,7 +79,8 @@
     </script>
 </head>
 <body onload="connect()">
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
     Javascript and reload this page!</h2></noscript>
 
 <div>
@@ -96,6 +99,17 @@
 </div>
 <br>
 <br>
-${replayInfo.replayId}
+<style>
+    <c:forEach items="${viewReplayDto.images}" var="image" varStatus="loopStatus">
+    <%-- TODO: refactor this - we shouldn't create a css for the color all over again, if it was already defined --%>
+    <c:set var="imageCssClass" value="${fn:replace(image.name, ' ' ,'_' )}"/>
+    div.${imageCssClass} {
+        background: url(${image.uri});
+    }
+
+    </c:forEach>
+
+
+</style>
 </body>
 </html>
