@@ -20,9 +20,22 @@ Major Plan for this project
     you only)
 
 
+Setup
+=====
+
+You'll need at least Java 8 and Maven 3. Download and install them (they should be zip files which you'll extract
+and setup their paths. See the corresponding install manuals)
+
+Run setup-resources.bat to setup symlinks to the data folders. We'll need them if we want to host images 
+and config files.
+
+For the CI Server there will be a seprate maven goal to copy the resources to the corresponding directories.
+
 
 Current Status
 ==============
 
 Currently you can browse (just one) the directory of replays and have the possibility to download or watch it.
 If you click on watch, you'll get the map displayed. (WIP here: I'm displaying currently just the map-tiles text)
+
+See todo.txt if you want to contribute

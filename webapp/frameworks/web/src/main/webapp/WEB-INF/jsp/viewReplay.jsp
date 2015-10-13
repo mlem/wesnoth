@@ -79,6 +79,12 @@
 <body onload="connect()">
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
     Javascript and reload this page!</h2></noscript>
+
+<div>
+    Just for test:
+    <img src="/data/core/images/terrain/water/ocean-tile.png">
+</div>
+
 <div>
     <div>
         <button id="connect" onclick="connect();">Connect</button>

@@ -6,22 +6,16 @@
 
     <parent>
         <groupId>org.wesnoth</groupId>
-        <artifactId>root</artifactId>
+        <artifactId>frameworks</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>frameworks</artifactId>
+    <artifactId>config-repo</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>external-interfaces</module>
-        <module>web</module>
-        <module>tools</module>
-        <module>wml-grammar</module>
-        <module>replay-viewer-socket</module>
-        <module>config-repo</module>
-    </modules>
+    <description>
+        This module has the only purpose to provide information from the .cfg files from wesnoth/data folder.
+        It should have some convenient API to read only the config files.
+    </description>
 
-
-
+    
 </project>
