@@ -58,13 +58,20 @@
                     var rowDiv = document.createElement('div');
                     rowDiv.classList.add("tile-row");
                     for (var j = 0; j < row.length; j++) {
-                        var tile = row[j]['tileString'].replace(/\d+ /g, '');
+                        var tile = row[j]['tileString'].replace(/ /g, '^');
                         var div = document.createElement('div');
 
                         div.classList.add("tile");
                         var tileClasses = tile.split("^");
-                        for (var k = tileClasses.length - 1; k >= 0; k--) {
-                            div.classList.add(tileClasses[k]);
+                        var lastDiv = div;
+                        for (var k = 0; k < tileClasses.length; k++) {
+                            var subdiv = document.createElement('div');
+                            subdiv.classList.add("tile");
+                            subdiv.style.margin = "-6px";
+                            subdiv.classList.add(tileClasses[k]);
+                            lastDiv.appendChild(subdiv);
+                            lastDiv = subdiv;
+
                         }
                         div.appendChild(document.createTextNode(tile));
                         rowDiv.appendChild(div);

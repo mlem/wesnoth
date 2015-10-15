@@ -20,6 +20,6 @@ public class ImageMapping {
     }
 
     public String name() {
-        return wmlTag.getAttribute("string");
+        return wmlTag.getAttribute("string").replaceAll("\\^", "");
     }
 }
