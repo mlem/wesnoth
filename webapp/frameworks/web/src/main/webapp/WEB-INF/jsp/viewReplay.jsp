@@ -56,16 +56,16 @@
                 for (var i = 0; i < map.length; i++) {
                     var row = map[i];
                     var rowDiv = document.createElement('div');
-                    rowDiv.style.clear = 'both';
-                    rowDiv.style.float = 'left';
-                    rowDiv.style.display = 'block';
-                    rowDiv.style.position = 'relative';
+                    rowDiv.classList.add("tile-row");
                     for (var j = 0; j < row.length; j++) {
-                        var tile = row[j]['tileString'].replace(/ /g, '_');
+                        var tile = row[j]['tileString'].replace(/\d+ /g, '');
                         var div = document.createElement('div');
 
-                        div.classList.add(tile)
-                        div.style.float = 'left';
+                        div.classList.add("tile");
+                        var tileClasses = tile.split("^");
+                        for (var k = tileClasses.length - 1; k >= 0; k--) {
+                            div.classList.add(tileClasses[k]);
+                        }
                         div.appendChild(document.createTextNode(tile));
                         rowDiv.appendChild(div);
                     }
@@ -77,6 +77,32 @@
             response.appendChild(p);
         }
     </script>
+    <style>
+        div.tile-row {
+            clear: both;
+            float: left;
+            display: block;
+            position: relative;
+        }
+
+        div.tile {
+            padding: 6px;
+            width: 60px;
+            height: 60px;
+            top: -6px;
+            left: -6px;
+            float: left;
+        }
+
+        div.tile:nth-child(2n) {
+            margin-top: -36px;
+        }
+
+        div.tile:nth-child(n+1) {
+            margin-left: -18px;
+        }
+
+    </style>
 </head>
 <body onload="connect()">
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
