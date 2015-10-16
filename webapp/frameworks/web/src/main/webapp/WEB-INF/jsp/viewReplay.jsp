@@ -62,6 +62,7 @@
                         var div = document.createElement('div');
 
                         div.classList.add("tile");
+                        div.classList.add("tile-holder");
                         var tileClasses = tile.split("^");
                         var lastDiv = div;
                         for (var k = 0; k < tileClasses.length; k++) {
@@ -107,6 +108,17 @@
 
         div.tile:nth-child(n+1) {
             margin-left: -18px;
+        }
+        div.tile-holder:hover {
+            border-top: 2px solid #d0d0d0;
+        }
+
+        div.tile-holder:hover:nth-child(2n) {
+            margin-top: -38px;
+        }
+
+        div.tile-holder:hover:nth-child(2n+1) {
+            margin-top: -2px;
         }
 
     </style>
