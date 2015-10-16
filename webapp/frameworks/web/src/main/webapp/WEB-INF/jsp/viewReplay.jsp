@@ -58,7 +58,7 @@
                     var rowDiv = document.createElement('div');
                     rowDiv.classList.add("tile-row");
                     for (var j = 0; j < row.length; j++) {
-                        var tile = row[j]['tileString'].replace(/ /g, '^');
+                        var tile = row[j]['tileString'].replace(/ /g, '^').replace(/\//g, '-ne-sw');
                         var div = document.createElement('div');
 
                         div.classList.add("tile");
