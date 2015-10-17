@@ -61,19 +61,20 @@
                         var tile = row[j]['tileString'].replace(/ /g, '^').replace(/\//g, '-ne-sw');
                         var div = document.createElement('div');
 
-                        div.classList.add("tile");
-                        div.classList.add("tile-holder");
+                        div.classList.add("hex");
                         var tileClasses = tile.split("^");
                         var lastDiv = div;
                         for (var k = 0; k < tileClasses.length; k++) {
                             var subdiv = document.createElement('div');
-                            subdiv.classList.add("tile");
-                            subdiv.style.margin = "-6px";
+                            subdiv.classList.add("hex-in");
                             subdiv.classList.add(tileClasses[k]);
                             lastDiv.appendChild(subdiv);
                             lastDiv = subdiv;
 
                         }
+                        var overlay = document.createElement('span');
+                        overlay.classList.add("overlay");
+                        lastDiv.appendChild(overlay);
                         div.appendChild(document.createTextNode(tile));
                         rowDiv.appendChild(div);
                     }
@@ -93,32 +94,50 @@
             position: relative;
         }
 
-        div.tile {
-            padding: 6px;
-            width: 60px;
-            height: 60px;
-            top: -6px;
-            left: -6px;
+        div.hex {
             float: left;
         }
 
-        div.tile:nth-child(2n) {
+        div.hex:nth-child(2n) {
             margin-top: -36px;
         }
 
-        div.tile:nth-child(n+1) {
+        div.hex:nth-child(n+1) {
             margin-left: -18px;
         }
-        div.tile-holder:hover {
-            border-top: 2px solid #d0d0d0;
+
+        .hex, .hex-in {
+            width: 72px;
+            height: 72px;
+            display: inline-block;
+            background: linear-gradient(
+                    rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)
+            );
+
+            -webkit-mask: url(/hexagon.svg) no-repeat 50% 50%;
+            mask: url(/hexagon.svg) no-repeat 50% 50%;
+            -webkit-mask-size: cover;
+            mask-size: cover;
         }
 
-        div.tile-holder:hover:nth-child(2n) {
-            margin-top: -38px;
+        .overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #000;
+            opacity: 0;
+            border-radius: 30px;
         }
 
-        div.tile-holder:hover:nth-child(2n+1) {
-            margin-top: -2px;
+        div:hover > .overlay {
+            opacity: 0.5;
+        }
+
+        .hex:hover {
+            stroke: #fff20f;
+            stroke-width: 2;
+
         }
 
     </style>
@@ -130,7 +149,34 @@
 
 <div>
     Just for test:
+    <svg id="image-fill" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="300"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <defs>
+            <pattern id="Wo" x="0" y="0" height="72" width="72" patternUnits="userSpaceOnUse">
+                <image width="72" height="72" xlink:href="/data/core/images/terrain/water/ocean-tile.png"></image>
+            </pattern>
+            <polygon id="hexagon" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36"></polygon>
+        </defs>
+        <use x="0" y="0" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+        <use x="54" y="36" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+        <use x="108" y="0" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+        <use x="162" y="36" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+
+        <use x="0" y="72" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+        <use x="54" y="108" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+        <use x="108" y="72" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+        <use x="162" y="108" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
+
+
+    </svg>
+    <svg id="hex-image" xmlns="http://www.w3.org/2000/svg" version="1.1" width="72px" height="72px"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+        <polygon points="18,0 54,0 72,36 54,72 18,72 0,36"></polygon>
+    </svg>
     <img src="/data/core/images/terrain/water/ocean-tile.png">
+
+    <div class="hex Dd"></div>
 </div>
 
 <div>
@@ -148,7 +194,7 @@
     <c:forEach items="${viewReplayDto.images}" var="image" varStatus="loopStatus">
     <%-- TODO: refactor this - we shouldn't create a css for the color all over again, if it was already defined --%>
     <c:set var="imageCssClass" value="${fn:replace(image.name, ' ' ,'_' )}"/>
-    div.${imageCssClass} {
+    .${imageCssClass} {
         background: url(${image.uri});
     }
 
