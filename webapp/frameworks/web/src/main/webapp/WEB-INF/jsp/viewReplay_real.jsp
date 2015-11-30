@@ -44,73 +44,6 @@
             stompClient.send("/app/hello", {}, "${viewReplayDto.downloadUri}");
         }
 
-        function createHtmlRow(row) {
-            var rowDiv = document.createElement('div');
-            rowDiv.classList.add("tile-row");
-            for (var j = 0; j < row.length; j++) {
-                var tile = row[j]['tileString'].replace(/ /g, '^').replace(/\//g, '-ne-sw');
-                var div = document.createElement('div');
-
-                div.classList.add("hex");
-                var tileClasses = tile.split("^");
-                var lastDiv = div;
-                for (var k = 0; k < tileClasses.length; k++) {
-                    var subdiv = document.createElement('div');
-                    subdiv.classList.add("hex-in");
-                    subdiv.classList.add(tileClasses[k]);
-                    lastDiv.appendChild(subdiv);
-                    lastDiv = subdiv;
-
-                }
-                var overlay = document.createElement('span');
-                overlay.classList.add("overlay");
-                lastDiv.appendChild(overlay);
-                div.appendChild(document.createTextNode(tile));
-                rowDiv.appendChild(div);
-            }
-            return rowDiv;
-        }
-        function appendAsHtml(map, p) {
-            for (var i = 0; i < map.length; i++) {
-                var row = map[i];
-                var rowDiv = createHtmlRow(row);
-                p.appendChild(rowDiv);
-            }
-        }
-        function createSvgRow(row, rowNumber, svg) {
-            var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-            svg.appendChild(g);
-            g.setAttribute('transform', 'translate(0,' + rowNumber * 72 + ')');
-
-            var rowDiv = g;
-            for (var j = 0; j < row.length; j++) {
-                var tile = row[j]['tileString'].replace(/ /g, '^').replace(/\//g, '-ne-sw');
-                var tileClasses = tile.split("^");
-                for (var k = 0; k < tileClasses.length; k++) {
-                    var overlayPolygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-                    overlayPolygon.classList.add('hex');
-                    overlayPolygon.classList.add('hex-in');
-                    overlayPolygon.setAttribute('points', '18,0 54,0 72,36 54,72 18,72 0,36');
-                    overlayPolygon.setAttribute('transform', 'translate(' + j * 54 + ',' + (j & 1) * 36 + ')');
-                    overlayPolygon.setAttribute('fill', 'url(#' + tileClasses[k] + ')');
-                    rowDiv.appendChild(overlayPolygon);
-                }
-            }
-            return rowDiv;
-
-        }
-        function appendAsSvg(map) {
-            var svg = document.getElementById('svg-map');
-            svg.setAttribute('width', '' + (map.length * 54 + 54));
-            svg.setAttribute('height', '' + (map.length * 72 + 72));
-            document.getElementById('body').appendChild(svg);
-            for (var i = 0; i < map.length; i++) {
-                var row = map[i];
-                var rowDiv = createSvgRow(row, i, svg);
-                svg.appendChild(rowDiv);
-            }
-        }
-
         function showGreeting(message) {
             var response = document.getElementById('response');
 
@@ -120,10 +53,33 @@
             p.style.wordWrap = 'break-word';
             if (json.payload.map !== undefined) {
                 var map = json.payload.map;
-                appendAsSvg(map);
-                appendAsHtml(map, p);
+                for (var i = 0; i < map.length; i++) {
+                    var row = map[i];
+                    var rowDiv = document.createElement('div');
+                    rowDiv.classList.add("tile-row");
+                    for (var j = 0; j < row.length; j++) {
+                        var tile = row[j]['tileString'].replace(/ /g, '^').replace(/\//g, '-ne-sw');
+                        var div = document.createElement('div');
 
+                        div.classList.add("hex");
+                        var tileClasses = tile.split("^");
+                        var lastDiv = div;
+                        for (var k = 0; k < tileClasses.length; k++) {
+                            var subdiv = document.createElement('div');
+                            subdiv.classList.add("hex-in");
+                            subdiv.classList.add(tileClasses[k]);
+                            lastDiv.appendChild(subdiv);
+                            lastDiv = subdiv;
 
+                        }
+                        var overlay = document.createElement('span');
+                        overlay.classList.add("overlay");
+                        lastDiv.appendChild(overlay);
+                        div.appendChild(document.createTextNode(tile));
+                        rowDiv.appendChild(div);
+                    }
+                    p.appendChild(rowDiv);
+                }
             } else {
                 p.appendChild(document.createTextNode(json.payload));
             }
@@ -186,7 +142,7 @@
 
     </style>
 </head>
-<body id="body" onload="connect()">
+<body onload="connect()">
 <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
     enabled. Please enable
     Javascript and reload this page!</h2></noscript>
@@ -200,15 +156,10 @@
             <pattern id="Wo" x="0" y="0" height="72" width="72" patternUnits="userSpaceOnUse">
                 <image width="72" height="72" xlink:href="/data/core/images/terrain/water/ocean-tile.png"></image>
             </pattern>
-            <pattern id="Md" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
-                <image x="0" y="0" xmlns:xlink="http://www.w3.org/1999/xlink"
-                       xlink:href="/data/core/images/terrain/mountains/dry-tile.png"></image>
-            </pattern>
             <polygon id="hexagon" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36"></polygon>
         </defs>
         <use x="0" y="0" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
         <use x="54" y="36" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
-        <use x="54" y="36" xlink:href="#hexagon" fill="url('#Md')" class="hex"></use>
         <use x="108" y="0" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
         <use x="162" y="36" xlink:href="#hexagon" fill="url('#Wo')" class="hex"></use>
 
@@ -233,38 +184,12 @@
         <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
     </div>
-    <svg id="svg-map" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-            <c:forEach items="${viewReplayDto.images}" var="image" varStatus="loopStatus">
-                <%-- TODO: refactor this - we shouldn't create a css for the color all over again, if it was already defined --%>
-                <c:set var="imageCssClass" value="${fn:replace(image.name, ' ' ,'_' )}"/>
-                <pattern id="${imageCssClass}" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
-                    <image height="72" width="72" xlink:href="${image.uri}"></image>
-                </pattern>
-            </c:forEach>
-        </defs>
-    </svg>
-
-    <svg id="svg-map2" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <defs>
-            <c:forEach items="${viewReplayDto.images}" var="image" varStatus="loopStatus">
-                <%-- TODO: refactor this - we shouldn't create a css for the color all over again, if it was already defined --%>
-                <c:set var="imageCssClass" value="${fn:replace(image.name, ' ' ,'_' )}"/>
-                <pattern id="pattern-${imageCssClass}" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
-                    <image height="72" width="72" xlink:href="${image.uri}"></image>
-                </pattern>
-                <polygon id="${imageCssClass}" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36"
-                     fill="url(#pattern-${imageCssClass})"></polygon>
-            </c:forEach>
-        </defs>
-    </svg>
     <div id="conversationDiv">
         <p id="response"></p>
     </div>
 </div>
 <br>
 <br>
-
 <style>
     <c:forEach items="${viewReplayDto.images}" var="image" varStatus="loopStatus">
     <%-- TODO: refactor this - we shouldn't create a css for the color all over again, if it was already defined --%>

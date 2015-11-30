@@ -1,0 +1,719 @@
+
+
+.Wog {
+    background: url(/data/core/images/terrain/water/ocean-grey-tile.png);
+}
+
+.Wo {
+    background: url(/data/core/images/terrain/water/ocean-tile.png);
+}
+
+.Wot {
+    background: url(/data/core/images/terrain/water/ocean-tropical-tile.png);
+}
+
+.Wwg {
+    background: url(/data/core/images/terrain/water/coast-grey-tile.png);
+}
+
+.Ww {
+    background: url(/data/core/images/terrain/water/coast-tile.png);
+}
+
+.Wwt {
+    background: url(/data/core/images/terrain/water/coast-tropical-tile.png);
+}
+
+.Wwf {
+    background: url(/data/core/images/terrain/water/ford-tile.png);
+}
+
+.Wwrg {
+    background: url(/data/core/images/terrain/water/reef-gray-tile.png);
+}
+
+.Wwr {
+    background: url(/data/core/images/terrain/water/reef-tile.png);
+}
+
+.Wwrt {
+    background: url(/data/core/images/terrain/water/reef-tropical-tile.png);
+}
+
+.Ss {
+    background: url(/data/core/images/terrain/swamp/water-tile.png);
+}
+
+.Sm {
+    background: url(/data/core/images/terrain/swamp/mud-tile.png);
+}
+
+.Gg {
+    background: url(/data/core/images/terrain/grass/green-symbol.png);
+}
+
+.Gs {
+    background: url(/data/core/images/terrain/grass/semi-dry.png);
+}
+
+.Gd {
+    background: url(/data/core/images/terrain/grass/dry-symbol.png);
+}
+
+.Gll {
+    background: url(/data/core/images/terrain/grass/leaf-litter.png);
+}
+
+.Rb {
+    background: url(/data/core/images/terrain/flat/dirt-dark.png);
+}
+
+.Re {
+    background: url(/data/core/images/terrain/flat/dirt.png);
+}
+
+.Rd {
+    background: url(/data/core/images/terrain/flat/desert-road.png);
+}
+
+.Rr {
+    background: url(/data/core/images/terrain/flat/road.png);
+}
+
+.Rrc {
+    background: url(/data/core/images/terrain/flat/road-clean.png);
+}
+
+.Rp {
+    background: url(/data/core/images/terrain/flat/stone-path.png);
+}
+
+.Ai {
+    background: url(/data/core/images/terrain/frozen/ice.png);
+}
+
+.Aa {
+    background: url(/data/core/images/terrain/frozen/snow.png);
+}
+
+.Dd {
+    background: url(/data/core/images/terrain/sand/desert.png);
+}
+
+.Ds {
+    background: url(/data/core/images/terrain/sand/beach.png);
+}
+
+.Do {
+    background: url(/data/core/images/terrain/sand/desert-oasis.png);
+}
+
+.Dr {
+    background: url(/data/core/images/terrain/misc/rubble-tile.png);
+}
+
+.DdDc {
+    background: url(/data/core/images/terrain/sand/crater.png);
+}
+
+.Efm {
+    background: url(/data/core/images/terrain/embellishments/flowers-mixed.png);
+}
+
+.Gvs {
+    background: url(/data/core/images/terrain/embellishments/farm-veg-spring-icon.png);
+}
+
+.Es {
+    background: url(/data/core/images/terrain/embellishments/stones-small7.png);
+}
+
+.Em {
+    background: url(/data/core/images/terrain/embellishments/mushroom.png);
+}
+
+.Emf {
+    background: url(/data/core/images/terrain/embellishments/mushroom-farm-small.png);
+}
+
+.Edp {
+    background: url(/data/core/images/terrain/embellishments/desert-plant5.png);
+}
+
+.Edpp {
+    background: url(/data/core/images/terrain/embellishments/desert-plant.png);
+}
+
+.Wm {
+    background: url(/data/core/images/terrain/misc/windmill-embellishment-tile.png);
+}
+
+.Ecf {
+    background: url(/data/core/images/terrain/misc/fire-A01.png);
+}
+
+.Eb {
+    background: url(/data/core/images/terrain/misc/brazier-embellishment.png);
+}
+
+.Ebn {
+    background: url(/data/core/images/terrain/misc/brazier-A01.png);
+}
+
+.Eff {
+    background: url(/data/core/images/terrain/embellishments/fence-se-nw-01.png);
+}
+
+.Esd {
+    background: url(/data/core/images/terrain/embellishments/rocks.png);
+}
+
+.Ewl {
+    background: url(/data/core/images/terrain/embellishments/water-lilies-tile.png);
+}
+
+.Ewf {
+    background: url(/data/core/images/terrain/embellishments/water-lilies-flower-tile.png);
+}
+
+.Edt {
+    background: url(/data/core/images/terrain/misc/detritus/trashC-1.png);
+}
+
+.Edb {
+    background: url(/data/core/images/terrain/misc/detritus/detritusC-1.png);
+}
+
+.Fet {
+    background: url(/data/core/images/terrain/forest/great-tree-tile.png);
+}
+
+.Fetd {
+    background: url(/data/core/images/terrain/forest/great-tree-dead-tile.png);
+}
+
+.Ft {
+    background: url(/data/core/images/terrain/forest/tropical/jungle-tile.png);
+}
+
+.Ftr {
+    background: url(/data/core/images/terrain/forest/tropical/rainforest-tile.png);
+}
+
+.Ftd {
+    background: url(/data/core/images/terrain/forest/tropical/palm-desert-tile.png);
+}
+
+.Ftp {
+    background: url(/data/core/images/terrain/forest/tropical/palms-tile.png);
+}
+
+.Fts {
+    background: url(/data/core/images/terrain/forest/tropical/savanna-tile.png);
+}
+
+.Fp {
+    background: url(/data/core/images/terrain/forest/pine-tile.png);
+}
+
+.Fpa {
+    background: url(/data/core/images/terrain/forest/snow-forest-tile.png);
+}
+
+.Fds {
+    background: url(/data/core/images/terrain/forest/deciduous-summer-tile.png);
+}
+
+.Fdf {
+    background: url(/data/core/images/terrain/forest/deciduous-fall-tile.png);
+}
+
+.Fdw {
+    background: url(/data/core/images/terrain/forest/deciduous-winter-tile.png);
+}
+
+.Fda {
+    background: url(/data/core/images/terrain/forest/deciduous-winter-snow-tile.png);
+}
+
+.Fms {
+    background: url(/data/core/images/terrain/forest/mixed-summer-tile.png);
+}
+
+.Fmf {
+    background: url(/data/core/images/terrain/forest/mixed-fall-tile.png);
+}
+
+.Fmw {
+    background: url(/data/core/images/terrain/forest/mixed-winter-tile.png);
+}
+
+.Fma {
+    background: url(/data/core/images/terrain/forest/mixed-winter-snow-tile.png);
+}
+
+.Hh {
+    background: url(/data/core/images/terrain/hills/regular.png);
+}
+
+.Hhd {
+    background: url(/data/core/images/terrain/hills/dry.png);
+}
+
+.Hd {
+    background: url(/data/core/images/terrain/hills/desert.png);
+}
+
+.Ha {
+    background: url(/data/core/images/terrain/hills/snow.png);
+}
+
+.Mm {
+    background: url(/data/core/images/terrain/mountains/basic-tile.png);
+}
+
+.Md {
+    background: url(/data/core/images/terrain/mountains/dry-tile.png);
+}
+
+.Ms {
+    background: url(/data/core/images/terrain/mountains/snow-tile.png);
+}
+
+.Iwr {
+    background: url(/data/core/images/terrain/interior/wood-regular.png);
+}
+
+.Ii {
+    background: url(/data/core/images/terrain/cave/beam-tile.png);
+}
+
+.Uu {
+    background: url(/data/core/images/terrain/cave/floor6.png);
+}
+
+.Uue {
+    background: url(/data/core/images/terrain/cave/earthy-floor3.png);
+}
+
+.Urb {
+    background: url(/data/core/images/terrain/cave/flagstones-dark.png);
+}
+
+.Ur {
+    background: url(/data/core/images/terrain/cave/path.png);
+}
+
+.Uf {
+    background: url(/data/core/images/terrain/forest/mushrooms-tile.png);
+}
+
+.Ufi {
+    background: url(/data/core/images/terrain/forest/mushrooms-beam-tile.png);
+}
+
+.Uh {
+    background: url(/data/core/images/terrain/cave/hills-variation.png);
+}
+
+.Br | {
+    background: url(/data/core/images/terrain/misc/rails-n-s.png);
+}
+
+.Br-ne-sw {
+    background: url(/data/core/images/terrain/misc/rails-ne-sw.png);
+}
+
+.Br\  {
+    background: url(/data/core/images/terrain/misc/rails-se-nw.png);
+}
+
+.Qxu {
+    background: url(/data/core/images/terrain/chasm/depths.png);
+}
+
+.Qxe {
+    background: url(/data/core/images/terrain/chasm/depths.png);
+}
+
+.Qxua {
+    background: url(/data/core/images/terrain/chasm/abyss.png);
+}
+
+.Ql {
+    background: url(/data/core/images/terrain/unwalkable/lava.png);
+}
+
+.Qlf {
+    background: url(/data/core/images/terrain/unwalkable/lava.png);
+}
+
+.Mv {
+    background: url(/data/core/images/terrain/mountains/volcano-tile.png);
+}
+
+.MmXm {
+    background: url(/data/core/images/terrain/mountains/cloud-tile.png);
+}
+
+.MdXm {
+    background: url(/data/core/images/terrain/mountains/cloud-desert-tile.png);
+}
+
+.MsXm {
+    background: url(/data/core/images/terrain/mountains/cloud-snow-tile.png);
+}
+
+.Xu {
+    background: url(/data/core/images/terrain/void/void.png);
+}
+
+.Xuc {
+    background: url(/data/core/images/terrain/void/void.png);
+}
+
+.Xue {
+    background: url(/data/core/images/terrain/void/void.png);
+}
+
+.Xuce {
+    background: url(/data/core/images/terrain/void/void.png);
+}
+
+.Xos {
+    background: url(/data/core/images/terrain/void/void.png);
+}
+
+.Xol {
+    background: url(/data/core/images/terrain/void/void.png);
+}
+
+.Xo {
+    background: url(/data/core/images/terrain/null.png);
+}
+
+.Qov {
+    background: url(/data/core/images/terrain/null.png);
+}
+
+.Xv {
+    background: url(/data/core/images/terrain/void/void.png);
+}
+
+.Vda {
+    background: url(/data/core/images/terrain/village/desert-tile.png);
+}
+
+.Vdt {
+    background: url(/data/core/images/terrain/village/desert-camp-tile.png);
+}
+
+.Vct {
+    background: url(/data/core/images/terrain/village/camp-tile.png);
+}
+
+.Vo {
+    background: url(/data/core/images/terrain/village/orc-tile.png);
+}
+
+.Voa {
+    background: url(/data/core/images/terrain/village/orc-snow-tile.png);
+}
+
+.Vea {
+    background: url(/data/core/images/terrain/village/elven-snow-tile.png);
+}
+
+.Ve {
+    background: url(/data/core/images/terrain/village/elven-tile.png);
+}
+
+.Vh {
+    background: url(/data/core/images/terrain/village/human-tile.png);
+}
+
+.Vha {
+    background: url(/data/core/images/terrain/village/snow-tile.png);
+}
+
+.Vhr {
+    background: url(/data/core/images/terrain/village/human-cottage-ruin-tile.png);
+}
+
+.Vhc {
+    background: url(/data/core/images/terrain/village/human-city-tile.png);
+}
+
+.Vwm {
+    background: url(/data/core/images/terrain/misc/windmill-tile.png);
+}
+
+.Vhca {
+    background: url(/data/core/images/terrain/village/human-city-snow-tile.png);
+}
+
+.Vhcr {
+    background: url(/data/core/images/terrain/village/human-city-ruin-tile.png);
+}
+
+.Vhh {
+    background: url(/data/core/images/terrain/village/human-hills-tile.png);
+}
+
+.Vhha {
+    background: url(/data/core/images/terrain/village/human-snow-hills-tile.png);
+}
+
+.Vhhr {
+    background: url(/data/core/images/terrain/village/human-hills-ruin-tile.png);
+}
+
+.Vht {
+    background: url(/data/core/images/terrain/village/tropical-tile.png);
+}
+
+.Vd {
+    background: url(/data/core/images/terrain/village/drake-tile.png);
+}
+
+.Vu {
+    background: url(/data/core/images/terrain/village/cave-tile.png);
+}
+
+.Vud {
+    background: url(/data/core/images/terrain/village/dwarven-tile.png);
+}
+
+.Vc {
+    background: url(/data/core/images/terrain/village/hut-tile.png);
+}
+
+.Vca {
+    background: url(/data/core/images/terrain/village/hut-snow-tile.png);
+}
+
+.Vl {
+    background: url(/data/core/images/terrain/village/log-cabin-tile.png);
+}
+
+.Vla {
+    background: url(/data/core/images/terrain/village/log-cabin-snow-tile.png);
+}
+
+.Vaa {
+    background: url(/data/core/images/terrain/village/igloo-tile.png);
+}
+
+.Vhs {
+    background: url(/data/core/images/terrain/village/swampwater-tile.png);
+}
+
+.Vm {
+    background: url(/data/core/images/terrain/village/coast-tile.png);
+}
+
+.Vov {
+    background: url(/data/core/images/terrain/fog/fog1.png);
+}
+
+.Ce {
+    background: url(/data/core/images/terrain/castle/encampment/regular-tile.png);
+}
+
+.Cea {
+    background: url(/data/core/images/terrain/castle/encampment/snow-tile.png);
+}
+
+.Co {
+    background: url(/data/core/images/terrain/castle/orcish/tile.png);
+}
+
+.Coa {
+    background: url(/data/core/images/terrain/castle/winter-orcish/tile.png);
+}
+
+.Ch {
+    background: url(/data/core/images/terrain/castle/castle-tile.png);
+}
+
+.Cha {
+    background: url(/data/core/images/terrain/castle/snowy/castle-tile.png);
+}
+
+.Cv {
+    background: url(/data/core/images/terrain/castle/elven/tile.png);
+}
+
+.Cud {
+    background: url(/data/core/images/terrain/castle/dwarven-castle-tile.png);
+}
+
+.Chr {
+    background: url(/data/core/images/terrain/castle/ruin-tile.png);
+}
+
+.Chw {
+    background: url(/data/core/images/terrain/castle/sunken-ruin-tile.png);
+}
+
+.Chs {
+    background: url(/data/core/images/terrain/castle/swamp-ruin-tile.png);
+}
+
+.Cd {
+    background: url(/data/core/images/terrain/castle/sand/tile.png);
+}
+
+.Cdr {
+    background: url(/data/core/images/terrain/castle/sand/ruin-tile.png);
+}
+
+.Ke {
+    background: url(/data/core/images/terrain/castle/encampment/regular-keep-tile.png);
+}
+
+.Ket {
+    background: url(/data/core/images/terrain/castle/encampment/tall-keep-tile.png);
+}
+
+.Kea {
+    background: url(/data/core/images/terrain/castle/encampment/snow-keep-tile.png);
+}
+
+.Ko {
+    background: url(/data/core/images/terrain/castle/orcish/keep-tile.png);
+}
+
+.Koa {
+    background: url(/data/core/images/terrain/castle/winter-orcish/keep-tile.png);
+}
+
+.Kh {
+    background: url(/data/core/images/terrain/castle/keep-tile.png);
+}
+
+.Kha {
+    background: url(/data/core/images/terrain/castle/snowy/keep-tile.png);
+}
+
+.Kv {
+    background: url(/data/core/images/terrain/castle/elven/keep-tile.png);
+}
+
+.Kud {
+    background: url(/data/core/images/terrain/castle/dwarven-keep-tile.png);
+}
+
+.Khr {
+    background: url(/data/core/images/terrain/castle/ruined-keep-tile.png);
+}
+
+.Khw {
+    background: url(/data/core/images/terrain/castle/sunken-keep-tile.png);
+}
+
+.Khs {
+    background: url(/data/core/images/terrain/castle/swamp-keep-tile.png);
+}
+
+.Kd {
+    background: url(/data/core/images/terrain/castle/sand/keep-tile.png);
+}
+
+.Kdr {
+    background: url(/data/core/images/terrain/castle/sand/ruin-keep-tile.png);
+}
+
+.Cov {
+    background: url(/data/core/images/terrain/fog/fog1.png);
+}
+
+.Kov {
+    background: url(/data/core/images/terrain/fog/fog1.png);
+}
+
+.Bw | {
+    background: url(/data/core/images/terrain/bridge/wood-n-s.png);
+}
+
+.Bw-ne-sw {
+    background: url(/data/core/images/terrain/bridge/wood-ne-sw.png);
+}
+
+.Bw\  {
+    background: url(/data/core/images/terrain/bridge/wood-se-nw.png);
+}
+
+.Bw |r {
+    background: url(/data/core/images/terrain/bridge/wood-rotting-n-s.png);
+}
+
+.Bw-ne-swr {
+    background: url(/data/core/images/terrain/bridge/wood-rotting-ne-sw.png);
+}
+
+.Bw\r {
+    background: url(/data/core/images/terrain/bridge/wood-rotting-se-nw.png);
+}
+
+.Bsb | {
+    background: url(/data/core/images/terrain/bridge/stonebridge-n-s-tile.png);
+}
+
+.Bsb\  {
+    background: url(/data/core/images/terrain/bridge/stonebridge-se-nw-tile.png);
+}
+
+.Bsb-ne-sw {
+    background: url(/data/core/images/terrain/bridge/stonebridge-ne-sw-tile.png);
+}
+
+.Bs | {
+    background: url(/data/core/images/terrain/cave/chasm-stone-bridge-s-n-tile.png);
+}
+
+.Bs-ne-sw {
+    background: url(/data/core/images/terrain/cave/chasm-stone-bridge-sw-ne-tile.png);
+}
+
+.Bs\  {
+    background: url(/data/core/images/terrain/cave/chasm-stone-bridge-se-nw-tile.png);
+}
+
+.Bh\  {
+    background: url(/data/core/images/terrain/bridge/hanging-se-nw-tile.png);
+}
+
+.Bh-ne-sw {
+    background: url(/data/core/images/terrain/bridge/hanging-sw-ne-tile.png);
+}
+
+.Bh | {
+    background: url(/data/core/images/terrain/bridge/hanging-s-n-tile.png);
+}
+
+.Bcx\  {
+    background: url(/data/core/images/terrain/bridge/chasm-se-nw-tile.png);
+}
+
+.Bcx-ne-sw {
+    background: url(/data/core/images/terrain/bridge/chasm-sw-ne-tile.png);
+}
+
+.Bcx | {
+    background: url(/data/core/images/terrain/bridge/chasm-s-n-tile.png);
+}
+
+.Bp\  {
+    background: url(/data/core/images/terrain/bridge/planks-se-nw-tile.png);
+}
+
+.Bp-ne-sw {
+    background: url(/data/core/images/terrain/bridge/planks-sw-ne-tile.png);
+}
+
+.Bp {
+    background: url(/data/core/images/terrain/bridge/planks-s-n.png);
+}
+
+
