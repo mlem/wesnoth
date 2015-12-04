@@ -1,5 +1,6 @@
-Todos:
-======
+Strike through completed todos and place them below e.g. <del>done</del>
+
+# Todos
 
 * Read the terrain.cfg for mapping of terrain
 * Read all other configs for other mappings (units, etc...)
@@ -13,18 +14,23 @@ Todos:
 * Create a speed-slider (I haven't considered how I will implement the speed. I think client-side)
 
 
-UI
-==
+# Completed
+* <del>example todo </del>
 
-Hexagons
-========
+
+# Notices
+
+## UI
+
+### Hexagons
+
 https://www.google.at/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=html5%20transform%20div%20to%20hexagon
 
 http://jsfiddle.net/M52QZ/
 
 
-Hexagon Grid
-============
+### Hexagon Grid
+
 https://www.google.at/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=html5%20hexagonal%20grid
 
 http://cssdeck.com/labs/responsive-hexagonal-grid
