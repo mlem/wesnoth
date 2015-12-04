@@ -91,7 +91,7 @@
                     overlayPolygon.classList.add('hex');
                     overlayPolygon.classList.add('hex-in');
                     overlayPolygon.setAttribute('points', '18,0 54,0 72,36 54,72 18,72 0,36');
-                    overlayPolygon.setAttribute('transform', 'translate(' + j * 54 + ',' + (j & 1) * 36 + ')');
+                    overlayPolygon.setAttribute('transform', 'translate(' + j * 54 + ',' + (j & 1) * (-36) + ')');
                     overlayPolygon.setAttribute('fill', 'url(#' + tileClasses[k] + ')');
                     rowDiv.appendChild(overlayPolygon);
                 }
