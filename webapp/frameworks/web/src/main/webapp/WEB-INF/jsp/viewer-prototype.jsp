@@ -9,7 +9,6 @@
 
     <script src="/sockjs-0.3.4.js"></script>
     <script src="/stomp.js"></script>
-    <link type="text/css" href="/test.css" rel="stylesheet"/>
     <script type="text/javascript">
 
 
