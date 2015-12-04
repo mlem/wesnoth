@@ -1,27 +1,20 @@
-<svg id="svg-map2" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+  <svg id="svg-map2" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
-            
                 <pattern id="pattern-Wog" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
                     <image height="72" width="72" xlink:href="/data/core/images/terrain/water/ocean-grey-tile.png"></image>
                 </pattern>
                 <polygon id="Wog" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36" fill="url(#pattern-Wog)"></polygon>
-            
-                
-                
                 <pattern id="pattern-Wo" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
                     <image height="72" width="72" xlink:href="/data/core/images/terrain/water/ocean-tile.png"></image>
                 </pattern>
                 <polygon id="Wo" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36" fill="url(#pattern-Wo)"></polygon>
-            
-                
-                
                 <pattern id="pattern-Wot" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
                     <image height="72" width="72" xlink:href="/data/core/images/terrain/water/ocean-tropical-tile.png"></image>
                 </pattern>
                 <polygon id="Wot" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36" fill="url(#pattern-Wot)"></polygon>
-            
-                
-                
                 <pattern id="pattern-Wwg" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
                     <image height="72" width="72" xlink:href="/data/core/images/terrain/water/coast-grey-tile.png"></image>
                 </pattern>
