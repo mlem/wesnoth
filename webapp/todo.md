@@ -2,6 +2,8 @@ Strike through completed todos and place them below e.g. <del>done</del>
 
 # Todos
 
+* ignore comments in terrain.cfg file
+* Load svg with definitions of terrain definitions.
 * Read all other configs for other mappings (units, etc...)
 * Find the difference between [replay] and [replay_start]
 * Parse the replay steps to entities and queue them
