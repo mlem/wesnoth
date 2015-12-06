@@ -2,7 +2,7 @@ Strike through completed todos and place them below e.g. <del>done</del>
 
 # Todos
 
-* ignore comments in terrain.cfg file
+* Solve potential multi-user-bug when you'll try to load several maps with one browser. (Hint UUID, User-Token)
 * Load svg with definitions of terrain definitions.
 * Read all other configs for other mappings (units, etc...)
 * Find the difference between [replay] and [replay_start]
@@ -17,7 +17,8 @@ Strike through completed todos and place them below e.g. <del>done</del>
 
 # Completed
 * <del>Read the terrain.cfg for mapping of terrain</del>
-
+* <del>ignore comments in terrain.cfg file</del>
+* <del>Load svg with definitions of terrain definitions.</del>
 
 # Notices
 
