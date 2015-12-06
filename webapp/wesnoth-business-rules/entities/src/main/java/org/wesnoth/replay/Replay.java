@@ -68,7 +68,8 @@ public class Replay extends Observable {
                     setChanged();
                     String mapData = tag.getAttribute("map_data");
                     String map = mapData.substring(mapData.indexOf("\n\n")+2);
-                    notifyObservers(new Map(map));
+                    String parsedMap = map.replaceAll("\\_off\\^\\_usr", "off_usr").replaceAll("\\d+ ", "");
+                    notifyObservers(new Map(parsedMap));
                     clearChanged();
                 }
         );
