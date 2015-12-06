@@ -2,7 +2,6 @@ Strike through completed todos and place them below e.g. <del>done</del>
 
 # Todos
 
-* Read the terrain.cfg for mapping of terrain
 * Read all other configs for other mappings (units, etc...)
 * Find the difference between [replay] and [replay_start]
 * Parse the replay steps to entities and queue them
@@ -15,7 +14,7 @@ Strike through completed todos and place them below e.g. <del>done</del>
 
 
 # Completed
-* <del>example todo </del>
+* <del>Read the terrain.cfg for mapping of terrain</del>
 
 
 # Notices
