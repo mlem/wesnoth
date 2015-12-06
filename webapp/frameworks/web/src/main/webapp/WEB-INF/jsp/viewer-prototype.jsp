@@ -72,8 +72,29 @@
         }
         function appendAsSvg(map) {
             var svg = document.getElementById('svg-map');
-            svg.setAttribute('width', '' + (map.length * 54 + 54));
-            svg.setAttribute('height', '' + (map.length * 72 + 72));
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            //svg.setAttribute('width', '' + (map.length * 54 + 54));
+            //svg.setAttribute('height', '' + (map.length * 72 + 72));
+            function displayWidth() {
+                return w - 150;
+            }
+
+            function displayHeight() {
+                return h - 100;
+            }
+            function mapWidth() {
+                return (map.length * 54 + 54);
+            }
+
+            function mapHeight() {
+                return (map.length * 72 + 72);
+            }
+
+            svg.setAttribute('width', '' + mapWidth() );
+            svg.setAttribute('height', '' + mapHeight() );
+
+            // svg.setAttribute('viewBox', '0 0 '+displayWidth()+' '+ displayHeight())
             document.getElementById('body').appendChild(svg);
             for (var i = 0; i < map.length; i++) {
                 var row = map[i];
@@ -171,36 +192,44 @@
 
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="300"
          xmlns:xlink="http://www.w3.org/1999/xlink">
+        <def>
+            <pattern id="pattern-Fet" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
+                <image height="72" width="72" xlink:href="/data/core/images/terrain/forest/great-tree-tile.png"/>
+            </pattern>
+            <polygon id="Fet-test" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36" fill="url(#pattern-Fet)"/>
+
+            <pattern id="pattern-Fp" x="18" y="18" patternUnits="userSpaceOnUse" >
+                <image xlink:href="/data/core/images/terrain/forest/pine2.png"/>
+            </pattern>
+            <polygon id="Fp-test" class="hex" points="36,0 108,0 144,72 108,144 36,144 0,72" fill="url(#pattern-Fp)"/>
+
+            <pattern id="pattern-Fpa" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
+                <image height="72" width="72" xlink:href="/data/core/images/terrain/forest/snow-forest-tile.png"/>
+            </pattern>
+            <polygon id="Fpa" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36" fill="url(#pattern-Fpa)"/>
+        </def>
+        <g transform="translate(0,0)">
+
+
+
         <use class="hex hex-in" xlink:href="#Wog" x="0" y="0"></use>
         <use class="hex hex-in" xlink:href="#Wog" x="54" y="36"></use>
         <use class="hex hex-in" xlink:href="#Dd" x="108" y="0"></use>
         <use class="hex hex-in" xlink:href="#Wog" x="162" y="36"></use>
-        <use class="hex hex-in" xlink:href="#_off" x="108" y="0"></use>
-        <use class="hex hex-in" xlink:href="#Dd" x="540" y="0"></use>
+        </g>
+        <g transform="translate(0,72)">
+            <use class="hex hex-in" xlink:href="#Fet-test" x="0" y="0"></use>
+            <use class="hex hex-in" xlink:href="#Gg" x="54" y="36"></use>
+            <use class="hex hex-in" xlink:href="#off_usr" x="108" y="0"></use>
+            <use class="hex hex-in" xlink:href="#Fp-test" x="162" y="36"></use>
+        </g>
     </svg>
 </div>
 
 <div>
-    <div>
-        <button id="connect" onclick="connect();">Connect</button>
-        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
-    </div>
-    <%--
-    TODO: make this visible. currently there are so many elements, but it still doesn't work.
-    --%>
     <svg id="svg-map" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
 
     </svg>
-    <div id="conversationDiv">
-        <p id="response"></p>
-    </div>
 </div>
-<br>
-<br>
-
-<style>
-
-
-</style>
 </body>
 </html>
