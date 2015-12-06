@@ -37,39 +37,6 @@
             stompClient.send("/app/hello", {}, "${viewReplayDto.downloadUri}");
         }
 
-        function createHtmlRow(row) {
-            var rowDiv = document.createElement('div');
-            rowDiv.classList.add("tile-row");
-            for (var j = 0; j < row.length; j++) {
-                var tile = row[j]['tileString'].replace(/ /g, '^').replace(/\//g, '-ne-sw');
-                var div = document.createElement('div');
-
-                div.classList.add("hex");
-                var tileClasses = tile.split("^");
-                var lastDiv = div;
-                for (var k = 0; k < tileClasses.length; k++) {
-                    var subdiv = document.createElement('div');
-                    subdiv.classList.add("hex-in");
-                    subdiv.classList.add(tileClasses[k]);
-                    lastDiv.appendChild(subdiv);
-                    lastDiv = subdiv;
-
-                }
-                var overlay = document.createElement('span');
-                overlay.classList.add("overlay");
-                lastDiv.appendChild(overlay);
-                div.appendChild(document.createTextNode(tile));
-                rowDiv.appendChild(div);
-            }
-            return rowDiv;
-        }
-        function appendAsHtml(map, p) {
-            for (var i = 0; i < map.length; i++) {
-                var row = map[i];
-                var rowDiv = createHtmlRow(row);
-                p.appendChild(rowDiv);
-            }
-        }
         function createSvgRow(row, rowNumber, svg) {
             var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
             svg.appendChild(g);
@@ -84,11 +51,9 @@
                     overlayPolygon.classList.add('hex');
                     overlayPolygon.classList.add('hex-in');
                     // definitions are preloaded onload with ajax (see javacsript below)
-                    overlayPolygon.setAttributeNS("http://www.w3.org/1999/xlink",'xlink:href', '#' + tileClasses[k]);
-                    // overlayPolygon.setAttribute('transform', 'translate(' + j * 54 + ',' + (j & 1) * 36 + ')');
+                    overlayPolygon.setAttributeNS("http://www.w3.org/1999/xlink", 'xlink:href', '#' + tileClasses[k]);
                     overlayPolygon.setAttribute('x', j * 54);
-                    overlayPolygon.setAttribute('y', (j & 1) * (-36));
-                    //overlayPolygon.setAttribute('fill', 'url(#' + tileClasses[k] + ')');
+                    overlayPolygon.setAttribute('y', (j + 1 & 1) * 36);
                     rowDiv.appendChild(overlayPolygon);
                 }
             }
@@ -99,8 +64,7 @@
             var svg = document.getElementById('svg-map2');
             var w = window.innerWidth;
             var h = window.innerHeight;
-            //svg.setAttribute('width', '' + (map.length * 54 + 54));
-            //svg.setAttribute('height', '' + (map.length * 72 + 72));
+
             function displayWidth() {
                 return w - 150;
             }
@@ -108,6 +72,7 @@
             function displayHeight() {
                 return h - 100;
             }
+
             function mapWidth() {
                 return (map.length * 54 + 54);
             }
@@ -116,8 +81,8 @@
                 return (map.length * 72 + 72);
             }
 
-            svg.setAttribute('width', '' + mapWidth() );
-            svg.setAttribute('height', '' + mapHeight() );
+            svg.setAttribute('width', '' + mapWidth());
+            svg.setAttribute('height', '' + mapHeight());
 
             // svg.setAttribute('viewBox', '0 0 '+displayWidth()+' '+ displayHeight())
             document.getElementById('body').appendChild(svg);
@@ -145,15 +110,18 @@
             }
             response.appendChild(p);
         }
-
-        var ajax = new XMLHttpRequest();
-        ajax.open("GET", "/test-map.svg", true);
-        ajax.send();
-        ajax.onload = function(e) {
-            var div = document.createElement("div");
-            div.innerHTML = ajax.responseText;
-            document.body.insertBefore(div, document.body.childNodes[0]);
+        function ajaxSvg(svgUrl) {
+            var ajax = new XMLHttpRequest();
+            ajax.open("GET", svgUrl, true);
+            ajax.send();
+            ajax.onload = function (e) {
+                var div = document.createElement("div");
+                div.innerHTML = ajax.responseText;
+                document.body.insertBefore(div, document.body.childNodes[0]);
+            }
         }
+        ajaxSvg("/test-map.svg");
+        ajaxSvg("/wesnoth-definitions.svg");
     </script>
     <style>
         div.tile-row {
@@ -192,6 +160,8 @@
 <div>
 
     <svg id="svg-map2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <rect width="100%" height="100%" fill="url('#background')">
+        </rect>
     </svg>
     <div id="conversationDiv">
         <p id="response"></p>
