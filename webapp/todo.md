@@ -2,8 +2,9 @@ Strike through completed todos and place them below e.g. <del>done</del>
 
 # Todos
 
+* Play map-music (as backgroundmusic vs action-sound) Verify it is possible to play two different sound files at same time
 * Solve potential multi-user-bug when you'll try to load several maps with one browser. (Hint UUID, User-Token)
-* Load svg with definitions of terrain definitions.
+* Load svg with definitions of terrain definitions dynamically (no static *.svg definition file).
 * Read all other configs for other mappings (units, etc...)
 * Find the difference between [replay] and [replay_start]
 * Parse the replay steps to entities and queue them

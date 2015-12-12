@@ -15,6 +15,7 @@
 
         replayDownloadUrl = "${viewReplayDto.downloadUri}";
         ajaxSvg("/test-map.svg");
+        ajaxSvg("/welcome/definitions/terrain.svg");
         ajaxSvg("/wesnoth-definitions.svg");
     </script>
 </head>

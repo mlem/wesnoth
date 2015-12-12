@@ -104,8 +104,21 @@ function ajaxSvg(svgUrl) {
     ajax.open("GET", svgUrl, true);
     ajax.send();
     ajax.onload = function (e) {
-        var div = document.createElement("div");
-        div.innerHTML = ajax.responseText;
-        document.body.insertBefore(div, document.body.childNodes[0]);
-    }
+        if (ajax.readyState === 4) {
+            if (ajax.status === 200) {
+                var div = document.createElement("div");
+                div.innerHTML = ajax.responseText;
+                document.body.insertBefore(div, document.body.childNodes[0]);
+            } else {
+                console.log("Error", ajax.statusText);
+                var div = document.createElement("div");
+                div.innerHTML = ajax.responseText;
+                document.body.insertBefore(div, document.body.childNodes[0]);
+            }
+        }
+    };
+    ajax.onerror = function (e) {
+        console.error(xhr.statusText);
+    };
+
 }
