@@ -19,6 +19,10 @@ public class ImageMapping {
         return new URI("/data/core/images/terrain/" + wmlTag.getAttribute("symbol_image") + ".png");
     }
 
+    public String id() {
+        return wmlTag.getAttribute("id");
+    }
+
     public String name() {
         return wmlTag.getAttribute("string").replaceAll("\\^", "").replaceAll("\\/", "-ne-sw");
     }

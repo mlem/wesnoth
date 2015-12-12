@@ -19,7 +19,7 @@ public class ImageControllerImpl implements ImageController {
                 .stream().map(mapping -> {
                             try {
                                 URI uri = mapping.uri();
-                                String name = mapping.name();
+                                String name = mapping.id();
                                 return new ImageDto(name, uri);
                             } catch (URISyntaxException e) {
                                         // todo:...

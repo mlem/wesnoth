@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertThat;
 
-public class ImageMappingsUsecaseTest {
+public class TerrainMappingTest {
 
     @Test
     public void test() throws MalformedURLException, URISyntaxException {
@@ -37,6 +37,7 @@ public class ImageMappingsUsecaseTest {
         assertThat(response.imageMapping(), is(instanceOf(ImageMappings.class)));
         assertThat(response.imageMapping().of(TagType.TERRAIN_TYPE, "Wog").isPresent(), is(true));
         assertThat(response.imageMapping().of(TagType.TERRAIN_TYPE, "Wog").get(), is(instanceOf(ImageMapping.class)));
+        assertThat(response.imageMapping().of(TagType.TERRAIN_TYPE, "Wog").get().id(), is("deep_water_gray"));
         assertThat(response.imageMapping().of(TagType.TERRAIN_TYPE, "Wog").get().uri(), is(new URI("/data/core/images/terrain/water/ocean-grey-tile.png")));
 
     }
