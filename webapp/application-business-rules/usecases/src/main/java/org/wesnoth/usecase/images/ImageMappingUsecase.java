@@ -16,9 +16,9 @@ public class ImageMappingUsecase {
     public static class Request {
         private InputStream inputStream;
 
-        public Request(InputStream inputStream) {
+        public Request(InputStream terrainConfigStream) {
 
-            this.inputStream = inputStream;
+            this.inputStream = terrainConfigStream;
         }
 
         public InputStream connection() {

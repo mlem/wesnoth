@@ -5,12 +5,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.plutext.jaxb.svg11.*;
 import org.springframework.http.ResponseEntity;
+import org.wesnoth.servlet.replay.ImageController;
+import org.wesnoth.servlet.replay.ImageDto;
+import org.wesnoth.usecase.images.ImageMappingUsecase;
 
 import javax.xml.bind.JAXBElement;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class DefinitionsResourceTest {
 
@@ -19,11 +27,15 @@ public class DefinitionsResourceTest {
     @Before
     public void setUp() throws Exception {
         definitionsResource = new DefinitionsResource();
+        ImageController mock = mock(ImageController.class);
+        ArrayList<ImageDto> images = new ArrayList<>();
+        images.add(new ImageDto("Wog", URI.create("/data/core/images/terrain/water/ocean-grey-tile.png")));
+        when(mock.listImages(any(ImageMappingUsecase.Request.class))).thenReturn(images);
+        definitionsResource.setImageController(mock);
     }
 
     @Test
     public void testSvgAttributes() {
-        DefinitionsResource definitionsResource = new DefinitionsResource();
         ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
         Svg svg = response.getBody();
         assertThat(svg.getWidth(), is("0px"));
