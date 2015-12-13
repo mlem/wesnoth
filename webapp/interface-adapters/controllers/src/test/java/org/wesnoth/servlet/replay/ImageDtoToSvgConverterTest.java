@@ -1,13 +1,9 @@
-package org.wesnoth.servlet.definitions;
+package org.wesnoth.servlet.replay;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.plutext.jaxb.svg11.*;
-import org.springframework.http.ResponseEntity;
-import org.wesnoth.servlet.replay.ImageController;
-import org.wesnoth.servlet.replay.ImageDto;
-import org.wesnoth.usecase.images.ImageMappingUsecase;
 
 import javax.xml.bind.JAXBElement;
 import java.net.URI;
@@ -16,28 +12,22 @@ import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
-public class DefinitionsResourceTest {
+public class ImageDtoToSvgConverterTest {
 
-    private DefinitionsResource definitionsResource;
+    private ImageDtoToSvgConverter imageDtoToSvgConverter;
+    private ArrayList<ImageDto> imageDtos;
 
     @Before
     public void setUp() throws Exception {
-        definitionsResource = new DefinitionsResource();
-        ImageController mock = mock(ImageController.class);
-        ArrayList<ImageDto> images = new ArrayList<>();
-        images.add(new ImageDto("Wog", URI.create("/data/core/images/terrain/water/ocean-grey-tile.png")));
-        when(mock.listImages(any(ImageMappingUsecase.Request.class))).thenReturn(images);
-        definitionsResource.setImageController(mock);
+        imageDtoToSvgConverter = new ImageDtoToSvgConverter();
+        imageDtos = new ArrayList<>();
+        imageDtos.add(new ImageDto("Wog", URI.create("/data/core/images/terrain/water/ocean-grey-tile.png")));
     }
 
     @Test
     public void testSvgAttributes() {
-        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
-        Svg svg = response.getBody();
+        Svg svg = imageDtoToSvgConverter.convertToSvg(imageDtos);
         assertThat(svg.getWidth(), is("0px"));
         assertThat(svg.getHeight(), is("0px"));
         assertThat(svg.getBaseProfile(), is("full"));
@@ -47,18 +37,17 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testSvgElements() {
-        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
+        Svg svg = imageDtoToSvgConverter.convertToSvg(imageDtos);
 
-        Svg svg = response.getBody();
         List<Object> elements = svg.getSVGDescriptionClassOrSVGAnimationClassOrSVGStructureClass();
         assertThat(elements.size(), is(2));
     }
 
     @Test
     public void testTitle() {
-        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
+        Svg svg = imageDtoToSvgConverter.convertToSvg(imageDtos);
 
-        JAXBElement<Title> jaxBTitle = title(response);
+        JAXBElement<Title> jaxBTitle = title(svg);
         assertThat(jaxBTitle.getDeclaredType(), CoreMatchers.equalTo(Title.class));
         assertThat(jaxBTitle.getName().getLocalPart(), is("title"));
         assertThat(jaxBTitle.getValue(), is(CoreMatchers.instanceOf(Title.class)));
@@ -67,17 +56,16 @@ public class DefinitionsResourceTest {
         assertThat(title.getContent(), is("generated Definitions for Map Tiles"));
     }
 
-    private JAXBElement<Title> title(ResponseEntity<Svg> response) {
-        Svg svg = response.getBody();
+    private JAXBElement<Title> title(Svg svg) {
         List<Object> elements = svg.getSVGDescriptionClassOrSVGAnimationClassOrSVGStructureClass();
         return (JAXBElement<Title>) elements.get(0);
     }
 
     @Test
     public void testDefs() {
-        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
+        Svg svg = imageDtoToSvgConverter.convertToSvg(imageDtos);
 
-        JAXBElement<Defs> jaxBDefs = jaxBDefs(response);
+        JAXBElement<Defs> jaxBDefs = jaxBDefs(svg);
         assertThat(jaxBDefs.getDeclaredType(), CoreMatchers.equalTo(Defs.class));
         assertThat(jaxBDefs.getName().getLocalPart(), is("defs"));
         assertThat(jaxBDefs.getValue(), is(CoreMatchers.instanceOf(Defs.class)));
@@ -89,9 +77,9 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testPattern() {
-        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
+        Svg svg = imageDtoToSvgConverter.convertToSvg(imageDtos);
 
-        List<Object> definitions = definitions(response);
+        List<Object> definitions = definitions(svg);
 
         //       <pattern id="pattern-Wog" x="0" y="0" patternUnits="userSpaceOnUse" height="72" width="72">
         //                  <image height="72" width="72" xlink:href="/data/core/images/terrain/water/ocean-grey-tile.png"/>
@@ -125,9 +113,9 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testPolygon() {
-        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
+        Svg svg = imageDtoToSvgConverter.convertToSvg(imageDtos);
 
-        List<Object> definitions = definitions(response);
+        List<Object> definitions = definitions(svg);
 
         //  <polygon id="Wog" class="hex" points="18,0 54,0 72,36 54,72 18,72 0,36" fill="url(#pattern-Wog)"/>
 
@@ -144,15 +132,14 @@ public class DefinitionsResourceTest {
         assertThat(polygon.getFill(), is("url(#pattern-Wog)"));
     }
 
-    private List<Object> definitions(ResponseEntity<Svg> response) {
-        JAXBElement<Defs> jaxBDefs = jaxBDefs(response);
+    private List<Object> definitions(Svg svg) {
+        JAXBElement<Defs> jaxBDefs = jaxBDefs(svg);
 
         Defs defs = jaxBDefs.getValue();
         return defs.getSVGDescriptionClassOrSVGAnimationClassOrSVGStructureClass();
     }
 
-    private JAXBElement<Defs> jaxBDefs(ResponseEntity<Svg> response) {
-        Svg svg = response.getBody();
+    private JAXBElement<Defs> jaxBDefs(Svg svg) {
         List<Object> elements = svg.getSVGDescriptionClassOrSVGAnimationClassOrSVGStructureClass();
         return (JAXBElement<Defs>) elements.get(1);
     }

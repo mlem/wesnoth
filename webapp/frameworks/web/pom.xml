@@ -61,11 +61,6 @@
             <version>1.9.13</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.plutext</groupId>
-            <artifactId>jaxb-svg11</artifactId>
-            <version>1.0.2</version>
-        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
