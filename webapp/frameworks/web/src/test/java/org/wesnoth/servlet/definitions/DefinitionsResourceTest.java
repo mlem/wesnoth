@@ -24,7 +24,7 @@ public class DefinitionsResourceTest {
     @Test
     public void testSvgAttributes() {
         DefinitionsResource definitionsResource = new DefinitionsResource();
-        ResponseEntity<Svg> response = definitionsResource.test(null, null);
+        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
         Svg svg = response.getBody();
         assertThat(svg.getWidth(), is("0px"));
         assertThat(svg.getHeight(), is("0px"));
@@ -35,7 +35,7 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testSvgElements() {
-        ResponseEntity<Svg> response = definitionsResource.test(null, null);
+        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
 
         Svg svg = response.getBody();
         List<Object> elements = svg.getSVGDescriptionClassOrSVGAnimationClassOrSVGStructureClass();
@@ -44,7 +44,7 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testTitle() {
-        ResponseEntity<Svg> response = definitionsResource.test(null, null);
+        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
 
         JAXBElement<Title> jaxBTitle = title(response);
         assertThat(jaxBTitle.getDeclaredType(), CoreMatchers.equalTo(Title.class));
@@ -63,7 +63,7 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testDefs() {
-        ResponseEntity<Svg> response = definitionsResource.test(null, null);
+        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
 
         JAXBElement<Defs> jaxBDefs = jaxBDefs(response);
         assertThat(jaxBDefs.getDeclaredType(), CoreMatchers.equalTo(Defs.class));
@@ -77,7 +77,7 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testPattern() {
-        ResponseEntity<Svg> response = definitionsResource.test(null, null);
+        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
 
         List<Object> definitions = definitions(response);
 
@@ -113,7 +113,7 @@ public class DefinitionsResourceTest {
 
     @Test
     public void testPolygon() {
-        ResponseEntity<Svg> response = definitionsResource.test(null, null);
+        ResponseEntity<Svg> response = definitionsResource.terrain(null, null);
 
         List<Object> definitions = definitions(response);
 

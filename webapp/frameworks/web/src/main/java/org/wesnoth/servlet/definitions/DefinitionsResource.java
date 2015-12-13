@@ -12,17 +12,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBElement;
-import javax.xml.namespace.QName;
 
 @Controller
 @RequestMapping(value = "/definitions")
 public class DefinitionsResource {
 
     @RequestMapping(value = "/terrain.svg", method = RequestMethod.GET, produces = {MediaType.APPLICATION_XML_VALUE})
-    public @ResponseBody ResponseEntity<Svg> test(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody ResponseEntity<Svg> terrain(HttpServletRequest request, HttpServletResponse response) {
 
-        Svg svg = createSvgBuilder()
+        Svg svg = new SvgBuilder()
                     .addTitle()
                         .content("generated Definitions for Map Tiles")
                     .finish()
@@ -51,21 +49,7 @@ public class DefinitionsResource {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_XML);
-        ResponseEntity<Svg> svgEntity = new ResponseEntity<Svg>(svg, headers, HttpStatus.OK);
-        return svgEntity;
+        return new ResponseEntity<Svg>(svg, headers, HttpStatus.OK);
     }
 
-    private SvgBuilder createSvgBuilder() {
-        SvgBuilder svgBuilder = new SvgBuilder();
-        return svgBuilder;
-        /*
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="full"
-       xmlns:xlink="http://www.w3.org/1999/xlink" height="0px" width="0px">
-         */
-    }
-
-    private <T> JAXBElement<T> wrapWithJAXBElement(String tagName, T element) {
-        QName tagQName = new QName(tagName);
-        return new JAXBElement<T>(tagQName, (Class<T>) element.getClass(), element);
-    }
 }
