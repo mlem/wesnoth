@@ -5,6 +5,7 @@ import org.wesnoth.wml.WMLTag;
 
 import java.io.InputStream;
 
+// TODO: Move this! to gateways module
 public class ConfigGateway {
 
     private InputStream connection;
